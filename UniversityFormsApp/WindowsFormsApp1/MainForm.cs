@@ -22,7 +22,6 @@ namespace WindowsFormsApp1 {
 
         private void MainForm_Load(object sender, EventArgs e) {
 
-            //MessageBox.Show("Hello World!");
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -42,10 +41,10 @@ namespace WindowsFormsApp1 {
             StudentForm form = new StudentForm();
             form.Student = student;
 
-            //this.Hide();
+
             form.ShowDialog();
 
-            //TODO: WHEN FORM THE CLOSES ADD THE STUDENT TO A STUDENT LIST
+            //WHEN FORM CLOSES ADD THE STUDENT TO A STUDENT LIST
             Students.Add(student);
 
             listBoxControl1.DataSource = Students.Select(x => x.Name);
