@@ -13,7 +13,8 @@ namespace WindowsFormsApp1 {
     public partial class MainForm : Form {
 
         List<Student> Students = new List<Student>();
-
+        List<Professor> Professors = new List<Professor>();
+        List<Course> Courses = new List<Course>();
 
         public MainForm() {
             InitializeComponent();
@@ -32,14 +33,12 @@ namespace WindowsFormsApp1 {
 
         }
 
+        // add student button
         private void button4_Click(object sender, EventArgs e) {
 
-
-
             Student student = new Student();
-            // TODO: 1. ΝΑ ΠΕΡΑΣΩ ΤΟ STUDENT ΟΒJECT ΣΤΗΝ ΦΟΡΜΑ!
 
-            // TODO: OPEN FORM ...
+            //OPEN FORM ...
             StudentForm form = new StudentForm();
             form.Student = student;
 
@@ -54,6 +53,34 @@ namespace WindowsFormsApp1 {
 
         private void button2_Click(object sender, EventArgs e) {
             Application.Exit();
+        }
+
+        // add professor button
+        private void button5_Click(object sender, EventArgs e) {
+            Professor professor = new Professor();
+            
+            ProfessorForm form = new ProfessorForm();
+            form.Professor = professor;
+
+            form.ShowDialog();
+
+            Professors.Add(professor);
+
+            listBoxControl3.DataSource = Professors.Select(x => x.Name);
+        }
+
+        // add course button
+        private void button3_Click(object sender, EventArgs e) {
+            Course course = new Course();
+
+            CourseForm form = new CourseForm();
+            form.Course = course;
+
+            form.ShowDialog();
+
+            Courses.Add(course);
+
+            listBoxControl2.DataSource = Courses.Select(x => x.Subject);
         }
     }
 }

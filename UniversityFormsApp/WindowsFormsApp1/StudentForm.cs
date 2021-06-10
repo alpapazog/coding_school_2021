@@ -13,7 +13,7 @@ namespace WindowsFormsApp1 {
 
     public partial class StudentForm : Form {
 
-        // PROPERTIES ????
+        // PROPERTIES
         public Student Student { get; set; }
 
         // CONSTRUCTOR
@@ -27,9 +27,10 @@ namespace WindowsFormsApp1 {
 
         }
 
+        //ok button
         private void button1_Click(object sender, EventArgs e) {
 
-            // todo: MODIFY THE OBJECT STUDENT -- CLOSE THE FORM!
+            //MODIFY THE OBJECT STUDENT -- CLOSE THE FORM!
 
             string firstName = string.Empty;
             string lastName = string.Empty;
@@ -41,9 +42,8 @@ namespace WindowsFormsApp1 {
             if(textEdit2.Text.Length > 0) {
                  lastName = textEdit2.Text;
             }
-            if (firstName != null && lastName != null) {
-                Student.Name = string.Format("{0} {1}", firstName, lastName);
-            }
+            Student.Name = string.Format("{0} {1}", firstName, lastName);
+            
 
             if (calcEdit1.Value > 0) {
                 Student.Age = (int)calcEdit1.Value;
@@ -55,8 +55,9 @@ namespace WindowsFormsApp1 {
             this.Close();
         }
 
+        //cancel button
         private void button2_Click(object sender, EventArgs e) {
-            // todo: CANCEL EVERYTHING -- DO NOT MODIFY THE OBJECT!
+            //CANCEL EVERYTHING -- DO NOT MODIFY THE OBJECT!
             this.Close();
         }
 

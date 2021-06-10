@@ -9,6 +9,7 @@ namespace WindowsFormsApp1 {
     public class Course {
 
         // PROPERTIES
+        public string Code { get; set; }
         public string Subject { get; set; }
         public int Hours { get; set; }
         public CoursesCategoryEnum Category { get; set; }

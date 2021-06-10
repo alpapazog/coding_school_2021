@@ -30,7 +30,11 @@ namespace WindowsFormsApp1 {
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
+            this.listBoxControl2 = new DevExpress.XtraEditors.ListBoxControl();
+            this.listBoxControl3 = new DevExpress.XtraEditors.ListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -62,6 +66,7 @@ namespace WindowsFormsApp1 {
             this.button3.TabIndex = 7;
             this.button3.Text = "Add Course...";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -81,6 +86,7 @@ namespace WindowsFormsApp1 {
             this.button5.TabIndex = 9;
             this.button5.Text = "Add Professor...";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // listBoxControl1
             // 
@@ -89,11 +95,27 @@ namespace WindowsFormsApp1 {
             this.listBoxControl1.Size = new System.Drawing.Size(109, 114);
             this.listBoxControl1.TabIndex = 10;
             // 
+            // listBoxControl2
+            // 
+            this.listBoxControl2.Location = new System.Drawing.Point(69, 222);
+            this.listBoxControl2.Name = "listBoxControl2";
+            this.listBoxControl2.Size = new System.Drawing.Size(109, 114);
+            this.listBoxControl2.TabIndex = 11;
+            // 
+            // listBoxControl3
+            // 
+            this.listBoxControl3.Location = new System.Drawing.Point(363, 222);
+            this.listBoxControl3.Name = "listBoxControl3";
+            this.listBoxControl3.Size = new System.Drawing.Size(109, 114);
+            this.listBoxControl3.TabIndex = 12;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.listBoxControl3);
+            this.Controls.Add(this.listBoxControl2);
             this.Controls.Add(this.listBoxControl1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -104,6 +126,8 @@ namespace WindowsFormsApp1 {
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,6 +140,8 @@ namespace WindowsFormsApp1 {
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl2;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl3;
     }
 }
 
