@@ -39,7 +39,7 @@ namespace WindowsFormsApp1 {
 
             //OPEN FORM ...
             StudentForm form = new StudentForm();
-            form.Student = student;
+            form.NewStudent = student;
 
 
             form.ShowDialog();
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1 {
             Professor professor = new Professor();
             
             ProfessorForm form = new ProfessorForm();
-            form.Professor = professor;
+            form.NewProfessor = professor;
 
             form.ShowDialog();
 
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1 {
             Course course = new Course();
 
             CourseForm form = new CourseForm();
-            form.Course = course;
+            form.NewCourse = course;
 
             form.ShowDialog();
 

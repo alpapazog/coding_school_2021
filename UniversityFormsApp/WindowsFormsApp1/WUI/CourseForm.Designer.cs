@@ -24,8 +24,6 @@ namespace WindowsFormsApp1 {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -33,30 +31,12 @@ namespace WindowsFormsApp1 {
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
+            this.ctrlOK = new System.Windows.Forms.Button();
+            this.ctrlCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(679, 406);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 32);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(564, 406);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 32);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelControl2
             // 
@@ -115,11 +95,33 @@ namespace WindowsFormsApp1 {
             this.calcEdit1.Size = new System.Drawing.Size(100, 20);
             this.calcEdit1.TabIndex = 38;
             // 
+            // ctrlOK
+            // 
+            this.ctrlOK.Location = new System.Drawing.Point(564, 406);
+            this.ctrlOK.Name = "ctrlOK";
+            this.ctrlOK.Size = new System.Drawing.Size(109, 32);
+            this.ctrlOK.TabIndex = 41;
+            this.ctrlOK.Text = "OK";
+            this.ctrlOK.UseVisualStyleBackColor = true;
+            this.ctrlOK.Click += new System.EventHandler(this.ctrlOK_Click);
+            // 
+            // ctrlCancel
+            // 
+            this.ctrlCancel.Location = new System.Drawing.Point(679, 406);
+            this.ctrlCancel.Name = "ctrlCancel";
+            this.ctrlCancel.Size = new System.Drawing.Size(109, 32);
+            this.ctrlCancel.TabIndex = 42;
+            this.ctrlCancel.Text = "Cancel";
+            this.ctrlCancel.UseVisualStyleBackColor = true;
+            this.ctrlCancel.Click += new System.EventHandler(this.ctrlCancel_Click);
+            // 
             // CourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ctrlCancel);
+            this.Controls.Add(this.ctrlOK);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.calcEdit1);
             this.Controls.Add(this.labelControl3);
@@ -127,8 +129,6 @@ namespace WindowsFormsApp1 {
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Name = "CourseForm";
             this.Text = "CourseForm";
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
@@ -140,9 +140,6 @@ namespace WindowsFormsApp1 {
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -150,5 +147,7 @@ namespace WindowsFormsApp1 {
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.CalcEdit calcEdit1;
+        private System.Windows.Forms.Button ctrlOK;
+        private System.Windows.Forms.Button ctrlCancel;
     }
 }
