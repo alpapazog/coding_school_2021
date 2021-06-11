@@ -23,18 +23,18 @@ namespace WindowsFormsApp1 {
             
 
         private void ctrlOK_Click(object sender, EventArgs e) {
-            if (textEdit1.Text.Length == 0 || textEdit2.Text.Length == 0) {
+            if (ctrlTextFirstName.Text.Length == 0 || ctrlTextLastName.Text.Length == 0) {
                 MessageBox.Show(NameErrorMessage);
                 return;
             }
-            string firstName = textEdit1.EditValue.ToString();
-            string lastName = textEdit2.EditValue.ToString();
+            string firstName = ctrlTextFirstName.EditValue.ToString();
+            string lastName = ctrlTextLastName.EditValue.ToString();
 
             NewProfessor.Name = string.Format("{0} {1}", firstName, lastName);
 
 
-            if (calcEdit1.Value > 0) {
-                NewProfessor.Age = Convert.ToInt32(calcEdit1.EditValue);
+            if (ctrlCalcAge.Value > 0) {
+                NewProfessor.Age = Convert.ToInt32(ctrlCalcAge.EditValue);
             }
             else {
                 MessageBox.Show(AgeErrorMessage);
@@ -42,14 +42,14 @@ namespace WindowsFormsApp1 {
             }
 
 
-            if (textEdit3.Text.Length != 0) {
+            if (ctrlTextCourse.Text.Length != 0) {
                 Course course = new Course();
-                course.Subject = textEdit3.EditValue.ToString();
+                course.Subject = ctrlTextCourse.EditValue.ToString();
                 NewProfessor.Courses = new Course[] { course };
             }
 
-            if (textEdit4.Text.Length > 0) {
-                NewProfessor.Rank = textEdit4.EditValue.ToString();
+            if (ctrlTextRank.Text.Length > 0) {
+                NewProfessor.Rank = ctrlTextRank.EditValue.ToString();
             }
             else {
                 MessageBox.Show(RankErrorMessage);

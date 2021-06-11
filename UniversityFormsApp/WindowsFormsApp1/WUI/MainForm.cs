@@ -26,16 +26,9 @@ namespace WindowsFormsApp1 {
 
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-
-        }
 
         // add student button
-        private void button4_Click(object sender, EventArgs e) {
+        private void ctrlAddStudent_Click(object sender, EventArgs e) {
 
             Student student = new Student();
 
@@ -54,12 +47,8 @@ namespace WindowsFormsApp1 {
             RefreshLists();
         }
 
-        private void button2_Click(object sender, EventArgs e) {
-            Application.Exit();
-        }
-
         // add professor button
-        private void button5_Click(object sender, EventArgs e) {
+        private void ctrlAddProfessor_Click(object sender, EventArgs e) {
             Professor professor = new Professor();
 
             ProfessorForm form = new ProfessorForm();
@@ -75,7 +64,7 @@ namespace WindowsFormsApp1 {
         }
 
         // add course button
-        private void button3_Click(object sender, EventArgs e) {
+        private void ctrlAddCourse_Click(object sender, EventArgs e) {
             Course course = new Course();
 
             CourseForm form = new CourseForm();
@@ -121,10 +110,14 @@ namespace WindowsFormsApp1 {
         }
 
         private void RefreshLists() {
-            listBoxControl2.DataSource = university.Courses.Select(x => x.Subject);
-            listBoxControl1.DataSource = university.Students.Select(x => x.Name);
-            listBoxControl3.DataSource = university.Professors.Select(x => x.Name);
+            ctrlListCourse.DataSource = university.Courses.Select(x => x.Subject);
+            ctrlListStudent.DataSource = university.Students.Select(x => x.Name);
+            ctrlListProfessor.DataSource = university.Professors.Select(x => x.Name);
 
+        }
+
+        private void ctrlExit_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
     }
 }

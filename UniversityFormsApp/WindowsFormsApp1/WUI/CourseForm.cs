@@ -28,28 +28,28 @@ namespace WindowsFormsApp1 {
 
         private void ctrlOK_Click(object sender, EventArgs e) {
 
-            if (textEdit1.Text.Length == 0) {
+            if (ctrlTextSubject.Text.Length == 0) {
                 MessageBox.Show(SubjectErrorMessage);
                 return;
             }
             else {
-                NewCourse.Subject = textEdit1.EditValue.ToString();
+                NewCourse.Subject = ctrlTextSubject.EditValue.ToString();
             }
 
-            if (calcEdit1.Value == 0) {
+            if (ctrlCalcHours.Value == 0) {
                 MessageBox.Show(HoursErrorMessage);
                 return;
             }
             else {
-                NewCourse.Hours = Convert.ToInt32(calcEdit1.EditValue);
+                NewCourse.Hours = Convert.ToInt32(ctrlCalcHours.EditValue);
             }
 
-            if (textEdit2.Text.Length == 0) {
+            if (ctrlTextCode.Text.Length == 0) {
                 MessageBox.Show(CodeErrorMessage);
                 return;
             }
             else {
-                NewCourse.Code = textEdit2.EditValue.ToString();
+                NewCourse.Code = ctrlTextCode.EditValue.ToString();
             }
 
             DialogResult = DialogResult.OK;

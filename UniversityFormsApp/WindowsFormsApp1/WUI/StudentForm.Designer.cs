@@ -24,96 +24,96 @@ namespace WindowsFormsApp1 {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.ctrlLabelTitle = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlTextFirstName = new DevExpress.XtraEditors.TextEdit();
+            this.ctrlTextLastName = new DevExpress.XtraEditors.TextEdit();
+            this.ctrlLabelFirstName = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlLabelLastName = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlCalcAge = new DevExpress.XtraEditors.CalcEdit();
+            this.ctrlLabelAge = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlLabelCourse = new DevExpress.XtraEditors.LabelControl();
+            this.ctrlTextCourse = new DevExpress.XtraEditors.TextEdit();
             this.ctrlCancel = new System.Windows.Forms.Button();
             this.ctrlOK = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlTextFirstName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlTextLastName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlCalcAge.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlTextCourse.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelControl2
+            // ctrlLabelTitle
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(218, 31);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(289, 39);
-            this.labelControl2.TabIndex = 6;
-            this.labelControl2.Text = "ADD NEW STUDENT";
+            this.ctrlLabelTitle.Appearance.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.ctrlLabelTitle.Appearance.Options.UseFont = true;
+            this.ctrlLabelTitle.Location = new System.Drawing.Point(218, 31);
+            this.ctrlLabelTitle.Name = "ctrlLabelTitle";
+            this.ctrlLabelTitle.Size = new System.Drawing.Size(289, 39);
+            this.ctrlLabelTitle.TabIndex = 6;
+            this.ctrlLabelTitle.Text = "ADD NEW STUDENT";
             // 
-            // textEdit1
+            // ctrlTextFirstName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(148, 103);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(153, 20);
-            this.textEdit1.TabIndex = 7;
+            this.ctrlTextFirstName.Location = new System.Drawing.Point(148, 103);
+            this.ctrlTextFirstName.Name = "ctrlTextFirstName";
+            this.ctrlTextFirstName.Size = new System.Drawing.Size(153, 20);
+            this.ctrlTextFirstName.TabIndex = 7;
             // 
-            // textEdit2
+            // ctrlTextLastName
             // 
-            this.textEdit2.Location = new System.Drawing.Point(148, 129);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(153, 20);
-            this.textEdit2.TabIndex = 8;
+            this.ctrlTextLastName.Location = new System.Drawing.Point(148, 129);
+            this.ctrlTextLastName.Name = "ctrlTextLastName";
+            this.ctrlTextLastName.Size = new System.Drawing.Size(153, 20);
+            this.ctrlTextLastName.TabIndex = 8;
             // 
-            // labelControl1
+            // ctrlLabelFirstName
             // 
-            this.labelControl1.Location = new System.Drawing.Point(79, 106);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(55, 13);
-            this.labelControl1.TabIndex = 10;
-            this.labelControl1.Text = "First Name:";
+            this.ctrlLabelFirstName.Location = new System.Drawing.Point(79, 106);
+            this.ctrlLabelFirstName.Name = "ctrlLabelFirstName";
+            this.ctrlLabelFirstName.Size = new System.Drawing.Size(55, 13);
+            this.ctrlLabelFirstName.TabIndex = 10;
+            this.ctrlLabelFirstName.Text = "First Name:";
             // 
-            // labelControl3
+            // ctrlLabelLastName
             // 
-            this.labelControl3.Location = new System.Drawing.Point(79, 132);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(54, 13);
-            this.labelControl3.TabIndex = 11;
-            this.labelControl3.Text = "Last Name:";
+            this.ctrlLabelLastName.Location = new System.Drawing.Point(79, 132);
+            this.ctrlLabelLastName.Name = "ctrlLabelLastName";
+            this.ctrlLabelLastName.Size = new System.Drawing.Size(54, 13);
+            this.ctrlLabelLastName.TabIndex = 11;
+            this.ctrlLabelLastName.Text = "Last Name:";
             // 
-            // calcEdit1
+            // ctrlCalcAge
             // 
-            this.calcEdit1.Location = new System.Drawing.Point(148, 155);
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ctrlCalcAge.Location = new System.Drawing.Point(148, 155);
+            this.ctrlCalcAge.Name = "ctrlCalcAge";
+            this.ctrlCalcAge.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Size = new System.Drawing.Size(100, 20);
-            this.calcEdit1.TabIndex = 12;
+            this.ctrlCalcAge.Size = new System.Drawing.Size(100, 20);
+            this.ctrlCalcAge.TabIndex = 12;
             // 
-            // labelControl4
+            // ctrlLabelAge
             // 
-            this.labelControl4.Location = new System.Drawing.Point(110, 158);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(23, 13);
-            this.labelControl4.TabIndex = 13;
-            this.labelControl4.Text = "Age:";
+            this.ctrlLabelAge.Location = new System.Drawing.Point(110, 158);
+            this.ctrlLabelAge.Name = "ctrlLabelAge";
+            this.ctrlLabelAge.Size = new System.Drawing.Size(23, 13);
+            this.ctrlLabelAge.TabIndex = 13;
+            this.ctrlLabelAge.Text = "Age:";
             // 
-            // labelControl5
+            // ctrlLabelCourse
             // 
-            this.labelControl5.Location = new System.Drawing.Point(64, 184);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(70, 13);
-            this.labelControl5.TabIndex = 15;
-            this.labelControl5.Text = "Add a course: ";
+            this.ctrlLabelCourse.Location = new System.Drawing.Point(64, 184);
+            this.ctrlLabelCourse.Name = "ctrlLabelCourse";
+            this.ctrlLabelCourse.Size = new System.Drawing.Size(70, 13);
+            this.ctrlLabelCourse.TabIndex = 15;
+            this.ctrlLabelCourse.Text = "Add a course: ";
             // 
-            // textEdit3
+            // ctrlTextCourse
             // 
-            this.textEdit3.EditValue = "(optional)";
-            this.textEdit3.Location = new System.Drawing.Point(148, 181);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textEdit3.Size = new System.Drawing.Size(153, 20);
-            this.textEdit3.TabIndex = 14;
+            this.ctrlTextCourse.EditValue = "(optional)";
+            this.ctrlTextCourse.Location = new System.Drawing.Point(148, 181);
+            this.ctrlTextCourse.Name = "ctrlTextCourse";
+            this.ctrlTextCourse.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ctrlTextCourse.Size = new System.Drawing.Size(153, 20);
+            this.ctrlTextCourse.TabIndex = 14;
             // 
             // ctrlCancel
             // 
@@ -142,37 +142,37 @@ namespace WindowsFormsApp1 {
             this.ClientSize = new System.Drawing.Size(718, 451);
             this.Controls.Add(this.ctrlCancel);
             this.Controls.Add(this.ctrlOK);
-            this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.textEdit3);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.calcEdit1);
-            this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit1);
-            this.Controls.Add(this.labelControl2);
+            this.Controls.Add(this.ctrlLabelCourse);
+            this.Controls.Add(this.ctrlTextCourse);
+            this.Controls.Add(this.ctrlLabelAge);
+            this.Controls.Add(this.ctrlCalcAge);
+            this.Controls.Add(this.ctrlLabelLastName);
+            this.Controls.Add(this.ctrlLabelFirstName);
+            this.Controls.Add(this.ctrlTextLastName);
+            this.Controls.Add(this.ctrlTextFirstName);
+            this.Controls.Add(this.ctrlLabelTitle);
             this.Name = "StudentForm";
             this.Text = "StudentForm";
             this.Load += new System.EventHandler(this.StudentForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlTextFirstName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlTextLastName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlCalcAge.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlTextCourse.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.CalcEdit calcEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.LabelControl ctrlLabelTitle;
+        private DevExpress.XtraEditors.TextEdit ctrlTextFirstName;
+        private DevExpress.XtraEditors.TextEdit ctrlTextLastName;
+        private DevExpress.XtraEditors.LabelControl ctrlLabelFirstName;
+        private DevExpress.XtraEditors.LabelControl ctrlLabelLastName;
+        private DevExpress.XtraEditors.CalcEdit ctrlCalcAge;
+        private DevExpress.XtraEditors.LabelControl ctrlLabelAge;
+        private DevExpress.XtraEditors.LabelControl ctrlLabelCourse;
+        private DevExpress.XtraEditors.TextEdit ctrlTextCourse;
         private System.Windows.Forms.Button ctrlCancel;
         private System.Windows.Forms.Button ctrlOK;
     }
