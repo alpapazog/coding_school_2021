@@ -32,7 +32,7 @@ namespace WindowsFormsApp1 {
         
 
         private void ctrlCancel_Click(object sender, EventArgs e) {
-            DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.Cancel;
             this.Close();
         }
 

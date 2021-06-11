@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
 
     public partial class MainForm : Form {
 
-        List<Student> Students = new List<Student>();
-        List<Professor> Professors = new List<Professor>();
-        List<Course> Courses = new List<Course>();
+        University university = new University();
+
+        private const string _JsonFile = "UniversityData.json";
 
         public MainForm() {
             InitializeComponent();
@@ -45,9 +47,11 @@ namespace WindowsFormsApp1 {
             form.ShowDialog();
 
             //WHEN FORM CLOSES ADD THE STUDENT TO A STUDENT LIST
-            Students.Add(student);
+            if (form.DialogResult == DialogResult.OK) {
+                university.Students.Add(student);
+            }
 
-            listBoxControl1.DataSource = Students.Select(x => x.Name);
+            RefreshLists();
         }
 
         private void button2_Click(object sender, EventArgs e) {
@@ -57,15 +61,17 @@ namespace WindowsFormsApp1 {
         // add professor button
         private void button5_Click(object sender, EventArgs e) {
             Professor professor = new Professor();
-            
+
             ProfessorForm form = new ProfessorForm();
             form.NewProfessor = professor;
 
             form.ShowDialog();
 
-            Professors.Add(professor);
+            if (form.DialogResult == DialogResult.OK) { 
+                university.Professors.Add(professor);
+            }
 
-            listBoxControl3.DataSource = Professors.Select(x => x.Name);
+            RefreshLists();
         }
 
         // add course button
@@ -77,9 +83,48 @@ namespace WindowsFormsApp1 {
 
             form.ShowDialog();
 
-            Courses.Add(course);
+            if (form.DialogResult == DialogResult.OK) {
+                university.Courses.Add(course);
+            }
 
-            listBoxControl2.DataSource = Courses.Select(x => x.Subject);
+            RefreshLists();
+        }
+
+        private void ctrlImport_Click(object sender, EventArgs e) {
+            ImportFromJson();
+        }
+
+        private void ImportFromJson() {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            string path = Path.Combine(Environment.CurrentDirectory, _JsonFile);
+            string data = File.ReadAllText(path);
+
+            university = serializer.Deserialize<University>(data);
+            
+            RefreshLists();
+        }
+
+        private void ctrlExtract_Click(object sender, EventArgs e) {
+            ExtractToJson();
+        }
+
+        private void ExtractToJson() {
+            
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            string data = serializer.Serialize(university);
+            
+            string path = Path.Combine(Environment.CurrentDirectory, _JsonFile);
+            
+            File.WriteAllText(path, data);
+        }
+
+        private void RefreshLists() {
+            listBoxControl2.DataSource = university.Courses.Select(x => x.Subject);
+            listBoxControl1.DataSource = university.Students.Select(x => x.Name);
+            listBoxControl3.DataSource = university.Professors.Select(x => x.Name);
+
         }
     }
 }

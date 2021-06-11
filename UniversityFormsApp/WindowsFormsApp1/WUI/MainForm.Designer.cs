@@ -32,6 +32,8 @@ namespace WindowsFormsApp1 {
             this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             this.listBoxControl2 = new DevExpress.XtraEditors.ListBoxControl();
             this.listBoxControl3 = new DevExpress.XtraEditors.ListBoxControl();
+            this.ctrlExtract = new System.Windows.Forms.Button();
+            this.ctrlImport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).BeginInit();
@@ -109,11 +111,33 @@ namespace WindowsFormsApp1 {
             this.listBoxControl3.Size = new System.Drawing.Size(109, 114);
             this.listBoxControl3.TabIndex = 12;
             // 
+            // ctrlExtract
+            // 
+            this.ctrlExtract.Location = new System.Drawing.Point(12, 458);
+            this.ctrlExtract.Name = "ctrlExtract";
+            this.ctrlExtract.Size = new System.Drawing.Size(143, 32);
+            this.ctrlExtract.TabIndex = 13;
+            this.ctrlExtract.Text = "Extract to JSON";
+            this.ctrlExtract.UseVisualStyleBackColor = true;
+            this.ctrlExtract.Click += new System.EventHandler(this.ctrlExtract_Click);
+            // 
+            // ctrlImport
+            // 
+            this.ctrlImport.Location = new System.Drawing.Point(161, 458);
+            this.ctrlImport.Name = "ctrlImport";
+            this.ctrlImport.Size = new System.Drawing.Size(143, 32);
+            this.ctrlImport.TabIndex = 14;
+            this.ctrlImport.Text = "Import from JSON";
+            this.ctrlImport.UseVisualStyleBackColor = true;
+            this.ctrlImport.Click += new System.EventHandler(this.ctrlImport_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.ctrlImport);
+            this.Controls.Add(this.ctrlExtract);
             this.Controls.Add(this.listBoxControl3);
             this.Controls.Add(this.listBoxControl2);
             this.Controls.Add(this.listBoxControl1);
@@ -142,6 +166,8 @@ namespace WindowsFormsApp1 {
         private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
         private DevExpress.XtraEditors.ListBoxControl listBoxControl2;
         private DevExpress.XtraEditors.ListBoxControl listBoxControl3;
+        private System.Windows.Forms.Button ctrlExtract;
+        private System.Windows.Forms.Button ctrlImport;
     }
 }
 
