@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1 {
 
-    public class Course {
+    public class Entity {
+        public Guid ID { get; private set; }
+        public Entity() {
+            ID = Guid.NewGuid();
+        }
+    }
+    public class Person : Entity {
+        public string Name { get; set; }
+        public int Age { get; set; }
+
+        public Person() : base() {
+
+        }
+    }
+
+    public class Course : Entity {
 
         // PROPERTIES
         public string Code { get; set; }
@@ -15,35 +30,28 @@ namespace WindowsFormsApp1 {
         public CoursesCategoryEnum Category { get; set; }
 
         // CONSTRUCTOR
-        public Course() {
+        public Course() : base() {
 
         }
 
         // METHODS
     }
 
-    public class Student {
-
-        public Guid ID { get; private set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
+    public class Student : Person {
+        
         public Course[] Courses { get; set; }
 
-        public Student() {
-            ID = Guid.NewGuid();
+        public Student() : base() {
+            
         }
 
     }
 
-    public class Professor {
-
-        public Guid ID { get; private set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
+    public class Professor : Person {
         public string Rank { get; set; }
         public Course[] Courses { get; set; }
-        public Professor() {
-            ID = Guid.NewGuid();
+        public Professor() : base() {
+            
         }
 
     }
@@ -228,7 +236,6 @@ namespace WindowsFormsApp1 {
 
     }
 
-
     public class Crud { 
     
     
@@ -252,27 +259,17 @@ namespace WindowsFormsApp1 {
         }
     }
 
-
-
-    public class Schedule  {
-
-        // PROPERTIES
-        public Guid ID { get; private set; }
+    public class Schedule : Entity {
 
         public Guid CourseID { get; set; }
         public Guid ProfessorID { get; set; }
 
         public DateTime Callendar { get; set; }
 
-        // CONSTRUCTOR
-        public Schedule() {
-            ID = Guid.NewGuid();
+        public Schedule() : base() {
+
         }
 
-        private void Init() {
-
-            ID = Guid.NewGuid();
-        }
 
     }
 
