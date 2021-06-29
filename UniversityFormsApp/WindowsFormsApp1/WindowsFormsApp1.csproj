@@ -100,6 +100,12 @@
     <Compile Include="WUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WUI\MdiMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WUI\MdiMainForm.Designer.cs">
+      <DependentUpon>MdiMainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WUI\ProfessorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WUI\MdiMainForm.resx">
+      <DependentUpon>MdiMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WUI\ProfessorForm.resx">
       <DependentUpon>ProfessorForm.cs</DependentUpon>

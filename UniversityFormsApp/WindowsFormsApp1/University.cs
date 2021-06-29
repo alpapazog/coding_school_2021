@@ -20,7 +20,6 @@ namespace WindowsFormsApp1 {
 
         }
     }
-
     public class Course : Entity {
 
         // PROPERTIES
@@ -36,7 +35,6 @@ namespace WindowsFormsApp1 {
 
         // METHODS
     }
-
     public class Student : Person {
         
         public Course[] Courses { get; set; }
@@ -46,7 +44,6 @@ namespace WindowsFormsApp1 {
         }
 
     }
-
     public class Professor : Person {
         public string Rank { get; set; }
         public Course[] Courses { get; set; }
@@ -55,16 +52,13 @@ namespace WindowsFormsApp1 {
         }
 
     }
-
     public class University : Entity {
 
         // PROPERTIES
         public List<Schedule> ScheduledCourses { get; set; }
-
         public List<Student> Students { get; set; }
         public List<Professor> Professors { get; set; }
         public List<Course> Courses { get; set; }
-
 
         public Schedule ScheduledCourse { get; set; }
 
@@ -242,7 +236,6 @@ namespace WindowsFormsApp1 {
         }
 
     }
-
     public class Crud { 
     
     
@@ -265,7 +258,6 @@ namespace WindowsFormsApp1 {
 
         }
     }
-
     public class Schedule : Entity {
 
         public Guid CourseID { get; set; }
