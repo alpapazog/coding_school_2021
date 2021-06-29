@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineTrainingCourses.EF.Context;
 
 namespace OnlineTrainingCourses.EF.Migrations
 {
     [DbContext(typeof(OnlineTrainingCoursesAppContext))]
-    partial class OnlineTrainingCoursesAppContextModelSnapshot : ModelSnapshot
+    [Migration("20210629161845_relation")]
+    partial class relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
