@@ -7,12 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  env:
-    working-directory: ./FibonacciApp
   build:
 
     runs-on: ubuntu-latest
 
+    env:
+      working-directory: ./FibonacciApp
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
