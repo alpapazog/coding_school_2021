@@ -21,12 +21,21 @@ namespace OnlineTrainingCoursesApp {
 
         private void Form1_Load(object sender, EventArgs e) {
             SavedFlag = true;
-            
+
             var optionsBuilder = new DbContextOptionsBuilder<OnlineTrainingCoursesAppContext>();
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-9DVRBJG;Initial Catalog=OnlineTrainingCoursesApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
             _DbContext = new OnlineTrainingCoursesAppContext(optionsBuilder.Options);
-
+            //
+            Student s = new Student();
+            s.Name = "a";
+            s.Surname = "b";
+            s.Birthdate = DateTime.Now;
+            s.Address = "kamp";
+            s.Courses = _DbContext.Courses.ToList<Course>();
+            _DbContext.Students.Add(s);
+            _DbContext.SaveChanges();
+            //
             bindingSource1.DataSource = _DbContext.Students.ToList<Student>();
             bindingSource2.DataSource = _DbContext.Courses.ToList<Course>();
             dataGridStudents.DataSource = bindingSource1;

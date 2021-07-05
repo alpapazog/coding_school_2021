@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineTrainingCourses.EF.Configuration;
 using OnlineTrainingCourses.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineTrainingCourses.EF.Context {
     public class OnlineTrainingCoursesAppContext : DbContext {
@@ -28,6 +23,15 @@ TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=Fal
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfiguration(new CourseConfiguration());
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
+            modelBuilder.Entity<Student>()
+                .HasMany<Course>(s => s.Courses)
+                .WithMany(c => c.Students);
+                //.Map(cs => {
+                //    cs.MapLeftKey("StudentRefId");
+                //    cs.MapRightKey("CourseRefId");
+                //    cs.ToTable("StudentCourse");
+                //});
+
             base.OnModelCreating(modelBuilder);
         }
 
