@@ -15,7 +15,7 @@ namespace FibonacciLibrary {
                 return n;
             }
             else {
-                return FibonacciSeries(n - 1) - FibonacciSeries(n - 2);
+                return FibonacciSeries(n - 1) + FibonacciSeries(n - 2);
             }
         }
     }
