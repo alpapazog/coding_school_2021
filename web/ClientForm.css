@@ -8,6 +8,7 @@ input[type=text] {
   *padding: 4px 14px;
   border-radius: 5px;
   border-color: lightgrey
+  margin:5 px 15 px
 }
 
 div {
@@ -20,8 +21,12 @@ table {
 	width:100%
 }
 
-th {
-	margin: 10
+.second {
+	text-align: right
+}
+
+td {
+	padding-right: 20px
 }
 
 label {
