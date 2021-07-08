@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 5,
+    "Name": "Alex",
+    "Surname": "Pap",
+    "AFM": "1231233",
+    "Active": true
+  },
+  {
+    "Id": 8,
+    "Name": "John",
+    "Surname": "Doe",
+    "AFM": "34451355",
+    "Active": true
+  }
+]

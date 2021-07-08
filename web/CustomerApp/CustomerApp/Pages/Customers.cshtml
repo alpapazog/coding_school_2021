@@ -1,0 +1,39 @@
+﻿@page
+@model CustomerApp.Pages.CustomersModel
+@{
+    ViewData["Title"] = "Customers";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Customers.css" />
+</head>
+
+<h1>@ViewData["Title"] - @Model.Message</h1>
+
+<table>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>AFM</th>
+        <th>Active</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (Customer c in Model.CustomerList) {
+        <tr>
+            <td>@c.Id</td>
+            <td>@c.Name</td>
+            <td>@c.Surname</td>
+            <td>@c.AFM</td>
+            <td>@c.Active</td>
+            <td>
+                <form method="post">
+                    <input type="submit" value="Edit" asp-page="/EditCustomer" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<form method="post">
+    <input type="submit" value="Add new customer" asp-page="/AddCustomer"/>
+</form>
+

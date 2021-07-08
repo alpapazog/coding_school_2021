@@ -1,0 +1,50 @@
+﻿@page
+@model CustomerApp.Pages.EditCustomerModel
+@{
+    ViewData["Title"] = "Edit customer";
+}
+
+<div>
+    <table>
+        <tr>
+            <td>
+                <label for="customerid">Id: </label>
+            </td>
+            <td>
+                <input type="text" id="customerid" name="customerid">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="customername">Name: </label>
+            </td>
+            <td>
+                <input type="text" id="customername" name="customername" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="customersurname">Surname: </label>
+            </td>
+            <td>
+                <input type="text" id="customersurname" name="customersurname" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="customerafm">AFM: </label>
+            </td>
+            <td>
+                <input type="text" id="customerafm" name="customerafm">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="customeractive">Active: </label>
+            </td>
+            <td>
+                <input type="checkbox" id="customeractive" name="customeractive">
+            </td>
+        </tr>
+    </table>
+</div>
