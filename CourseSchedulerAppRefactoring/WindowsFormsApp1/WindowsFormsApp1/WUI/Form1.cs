@@ -13,6 +13,11 @@ namespace UniversityApp.WUI {
 
         private University NewUniversity { get; set; }
 
+        private BindingSource BindingSourceStudents;
+        private BindingSource BindingSourceProfessors;
+        private BindingSource BindingSourceCourses;
+        private BindingSource BindingSourceSchedules;
+
         private string _jsonFile = "Data.json";
 
         public DataForm1() {
@@ -23,6 +28,9 @@ namespace UniversityApp.WUI {
         private void DataForm_Load(object sender, EventArgs e) {
             // todo : load data on enter!
         }
+
+        
+
         private void initializeDataToolStripMenuItem_Click(object sender, EventArgs e) {
             InitializeUniversityData();
         }
@@ -46,28 +54,40 @@ namespace UniversityApp.WUI {
             AddSchedule();
         }
         private void btnRemove_Click(object sender, EventArgs e) {
-
+            RemoveSchedules();
         }
+
         #endregion
 
         #region Methods
-        private void RefreshViews() {
-            foreach (Student student in NewUniversity.Students) {
-                list1.Items.Add(student.Name + " " + student.Surname);
-            }
+        private void RefreshDataGrids() {
+            dataGridCourses.Refresh();
+            dataGridProfessors.Refresh();
+            dataGridStudents.Refresh();
+            dataGridSchedules.Refresh();
+        }
+        private void InitDataGrids() {
+            BindingSourceStudents = new BindingSource();
+            BindingSourceProfessors = new BindingSource();
+            BindingSourceCourses = new BindingSource();
+            BindingSourceSchedules = new BindingSource();
 
-            foreach (Course course in NewUniversity.Courses) {
-                listBox1.Items.Add(course.Code + "--" + course.Subject);
-            }
+            BindingSourceStudents.DataSource = NewUniversity.Students;
+            BindingSourceProfessors.DataSource = NewUniversity.Professors;
+            BindingSourceCourses.DataSource = NewUniversity.Courses;
+            BindingSourceSchedules.DataSource = NewUniversity.ScheduleList;
 
+            dataGridCourses.DataSource = BindingSourceCourses;
+            dataGridProfessors.DataSource = BindingSourceProfessors;
+            dataGridStudents.DataSource = BindingSourceStudents;
+            dataGridSchedules.DataSource = BindingSourceSchedules;
 
-            foreach (Professor professor in NewUniversity.Professors) {
-
-                list3.Items.Add(string.Format("{0}  {1}", professor.Name, professor.Surname));
-            }
+            dataGridCourses.Columns["Id"].Visible = false;
+            dataGridProfessors.Columns["Id"].Visible = false;
+            dataGridStudents.Columns["Id"].Visible = false; ;
+            dataGridSchedules.Columns["Id"].Visible = false;
         }
         private void AddSchedule() {
-            try {
 
                 // TODO: 1. CANNOT ADD SAME STUDENT + PROFESSOR IN SAME DATE & HOUR
 
@@ -80,34 +100,25 @@ namespace UniversityApp.WUI {
 
                 // todo: add exception handling?
 
-                NewUniversity.ScheduleList.Add(new Schedule() { Course = listBox1.SelectedItem.ToString(), Student = list1.SelectedItem.ToString(), Professor = list3.SelectedItem.ToString(), Calendar = dateTimePicker2.Value });
+                //NewUniversity.ScheduleList.Add(new Schedule() { Course = listBox1.SelectedItem.ToString(), Student = list1.SelectedItem.ToString(), Professor = list3.SelectedItem.ToString(), Calendar = dateTimePicker2.Value });
 
-                ctrlSchedule.Items.Clear();
-                foreach (var AA in NewUniversity.ScheduleList) {
-
-                    ctrlSchedule.Items.Add(AA.Calendar + " | " + AA.Course + " | " + AA.Student + " | " + AA.Professor);
-
-                }
-            }
-            catch {
-
-            }
-            finally {
-                MessageBox.Show("all ok!");
-
-            }
+        }
+        private void RemoveSchedules() {
+            foreach (DataGridViewRow row in dataGridSchedules.SelectedRows) {
+                dataGridSchedules.Rows.Remove(row);
+            };
         }
         private void InitializeUniversityData() {
             NewUniversity = new University();
             NewUniversity.InitUniversity();
-            RefreshViews();
+            RefreshDataGrids();
         }
         private void SaveUniversityData() {
             (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);
         }
         private void LoadUniversityData() {
             NewUniversity = (new JsonHandler(_jsonFile)).DeserializeFromJson();
-            RefreshViews();
+            InitDataGrids();
         }
         private void validate_professorCourse_with_studentCourse() {
 
