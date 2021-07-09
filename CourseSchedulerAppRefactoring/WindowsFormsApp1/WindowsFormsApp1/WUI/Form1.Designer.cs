@@ -154,7 +154,9 @@ namespace UniversityApp.WUI {
             this.dataGridStudents.AllowUserToOrderColumns = true;
             this.dataGridStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStudents.Location = new System.Drawing.Point(72, 86);
+            this.dataGridStudents.MultiSelect = false;
             this.dataGridStudents.Name = "dataGridStudents";
+            this.dataGridStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridStudents.Size = new System.Drawing.Size(323, 150);
             this.dataGridStudents.TabIndex = 16;
             // 
@@ -163,7 +165,9 @@ namespace UniversityApp.WUI {
             this.dataGridProfessors.AllowUserToOrderColumns = true;
             this.dataGridProfessors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProfessors.Location = new System.Drawing.Point(72, 242);
+            this.dataGridProfessors.MultiSelect = false;
             this.dataGridProfessors.Name = "dataGridProfessors";
+            this.dataGridProfessors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridProfessors.Size = new System.Drawing.Size(323, 150);
             this.dataGridProfessors.TabIndex = 17;
             // 
@@ -172,7 +176,9 @@ namespace UniversityApp.WUI {
             this.dataGridCourses.AllowUserToOrderColumns = true;
             this.dataGridCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCourses.Location = new System.Drawing.Point(401, 86);
+            this.dataGridCourses.MultiSelect = false;
             this.dataGridCourses.Name = "dataGridCourses";
+            this.dataGridCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridCourses.Size = new System.Drawing.Size(323, 150);
             this.dataGridCourses.TabIndex = 18;
             // 

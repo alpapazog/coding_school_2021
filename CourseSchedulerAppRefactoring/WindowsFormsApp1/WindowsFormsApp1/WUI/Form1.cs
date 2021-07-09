@@ -106,7 +106,7 @@ namespace UniversityApp.WUI {
         private void RemoveSchedules() {
             foreach (DataGridViewRow row in dataGridSchedules.SelectedRows) {
                 dataGridSchedules.Rows.Remove(row);
-            };
+            }
         }
         private void InitializeUniversityData() {
             NewUniversity = new University();
@@ -125,9 +125,7 @@ namespace UniversityApp.WUI {
             //TODO: ???
 
         }
-
         #endregion
 
     }
 }
-
