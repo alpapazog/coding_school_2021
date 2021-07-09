@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1.WUI {
+namespace UniversityApp.WUI {
     partial class DataForm1 {
         /// <summary>
         /// Required designer variable.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.Impl {
+namespace UniversityApp.Impl {
 
     public class University  {
 
@@ -92,62 +92,6 @@ namespace WindowsFormsApp1.Impl {
         }
 
         public List<Course> _course { get; set; }
-    }
-
-    public class Student {
-        public Guid id { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public string Registration_Number { get; set; }
-        public int _Age { get; set; }
-        public List<CoursesCategoryEnum> CAN_LEARN { get; set; }
-    }
-
-    public class Professor {
-        public Guid ID { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public short Age { get; set; }
-        public string Rank { get; set; }
-        public List<CoursesCategoryEnum> CAN_TEACH { get; set; }
-
-        public Professor() {
-            ID = Guid.NewGuid();
-        }
-    }
-
-    public class Course  {
-        public string id { get; set; }
-        public string Code { get; set; }
-        public string Subject { get; set; }
-        public int Hours { get; set; }
-        public int Category { get; set; }
-
-        public Course() {
-                
-        }
-
-    }
-
-    public class Schedule {
-
-        public string ID { get; set; }
-        public string Student { get; set; }
-        public string Professor { get; set; }
-        public string Course { get; set; }
-        public DateTime Calendar { get; set; }
-
-        ~Schedule() {
-                
-        }
-    }
-
-   
-    public enum CoursesCategoryEnum {
-        Physics,
-        Mathematics,
-        Chemistry,
-        Financial
     }
 
 }

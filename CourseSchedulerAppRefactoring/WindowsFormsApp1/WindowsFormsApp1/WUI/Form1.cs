@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using WindowsFormsApp1.Impl;
+using UniversityApp.Impl;
 
-namespace WindowsFormsApp1.WUI {
+namespace UniversityApp.WUI {
 
     public partial class DataForm1 : Form {
 

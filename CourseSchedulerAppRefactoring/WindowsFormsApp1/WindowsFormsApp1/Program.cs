@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Impl;
-using WindowsFormsApp1.WUI;
+using UniversityApp.Impl;
+using UniversityApp.WUI;
 
-namespace WindowsFormsApp1 {
+namespace UniversityApp {
 
 
     static class Program {
