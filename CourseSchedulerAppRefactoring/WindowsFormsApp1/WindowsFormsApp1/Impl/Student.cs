@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using UniversityApp.Base;
 
 namespace UniversityApp.Impl {
-    public class Student {
-        public Guid id { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
+    public class Student : Person {
         public string Registration_Number { get; set; }
-        public int _Age { get; set; }
         public List<CoursesCategoryEnum> CAN_LEARN { get; set; }
+        public Student() : base() {
+
+        }
     }
 
 }
