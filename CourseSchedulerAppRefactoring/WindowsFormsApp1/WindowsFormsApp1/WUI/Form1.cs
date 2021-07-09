@@ -59,7 +59,7 @@ namespace UniversityApp.WUI {
 
         private void initializeDedomenaToolStripMenuItem_Click(object sender, EventArgs e) {
 
-            objects.run_once();
+            objects.InitUniversity();
 
             foreach (Student a in objects.Students) {
                 list1.Items.Add(a.Name + " " + a.Surname);
@@ -146,9 +146,7 @@ namespace UniversityApp.WUI {
 
         private void button11_Click(object sender, EventArgs e) {
 
-            
-
-            objects.run_once();
+            objects.InitUniversity();
 
             foreach (Student a in objects.Students) {
                 list1.Items.Add(a.Name + " " + a.Surname);

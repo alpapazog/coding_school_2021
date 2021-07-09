@@ -5,13 +5,10 @@ namespace UniversityApp.Impl {
         public string Code { get; set; }
         public string Subject { get; set; }
         public int Hours { get; set; }
-        public int Category { get; set; }
-
+        public CourseCategoryEnum Category { get; set; }
         public Course() : base() {
                 
         }
-
     }
-
 }
 

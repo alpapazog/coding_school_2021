@@ -20,7 +20,7 @@ namespace UniversityApp.Impl {
             ScheduleList = new List<Schedule>();
         }
 
-        public void run_once() {
+        public void InitUniversity() {
 
 
             // TODO: MUST IMPLEMENT ENUMERATION FOR CATEGORY ?
@@ -29,15 +29,16 @@ namespace UniversityApp.Impl {
                  
                 Code = "1",
                 Subject = "Quantum Physics",
-                Category = 0, // physics
+                Category = CourseCategoryEnum.Physics,
                 Hours = 100
             });
+            Console.WriteLine(Courses[0].Category.ToString());
 
             Courses.Add(new Course() {
                 
                 Code = "2",
                 Subject = "Electo-Dynamics",
-                Category = 0, // physics ?
+                Category = CourseCategoryEnum.Physics,
                 Hours = 50
             });
 
@@ -45,7 +46,7 @@ namespace UniversityApp.Impl {
                 
                 Code = "3",
                 Subject = "Basic Chemistry",
-                Category = 1, // Chemistry
+                Category = CourseCategoryEnum.Chemistry,
                 Hours = 50
             });
 
@@ -53,7 +54,7 @@ namespace UniversityApp.Impl {
                 
                 Code = "04",
                 Subject = "Financial II",
-                Category = 2, // Financial
+                Category = CourseCategoryEnum.Financial,
                 Hours = 50
             });
 
@@ -61,7 +62,7 @@ namespace UniversityApp.Impl {
                 
                 Code = "5",
                 Subject = "Mathematics I",
-                Category = 3, // Mathematics
+                Category = CourseCategoryEnum.Mathematics,
                 Hours = 50
             });
 
@@ -70,7 +71,7 @@ namespace UniversityApp.Impl {
                 Name = "Fotis",
                 Surname = "Chrysoulas",
                 Registration_Number = "1234",
-                CAN_LEARN = new List<CoursesCategoryEnum>() { CoursesCategoryEnum.Chemistry, CoursesCategoryEnum.Financial }
+                CAN_LEARN = new List<CourseCategoryEnum>() { CourseCategoryEnum.Chemistry, CourseCategoryEnum.Financial }
             });
 
 
@@ -79,7 +80,7 @@ namespace UniversityApp.Impl {
                 Name = "Dimitris",
                 Surname = "Raptodimos",
                 Registration_Number = "1235",
-                CAN_LEARN = new List<CoursesCategoryEnum>() { CoursesCategoryEnum.Physics, CoursesCategoryEnum.Financial } 
+                CAN_LEARN = new List<CourseCategoryEnum>() { CourseCategoryEnum.Physics, CourseCategoryEnum.Financial } 
             });
 
             Professors.Add(new Professor() {
