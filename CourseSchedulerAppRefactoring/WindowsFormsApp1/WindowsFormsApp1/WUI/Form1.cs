@@ -11,105 +11,62 @@ namespace UniversityApp.WUI {
 
     public partial class DataForm1 : Form {
 
-        private University objects = new University();
+        private University NewUniversity { get; set; }
+
+        private string _jsonFile = "Data.json";
 
         public DataForm1() {
             InitializeComponent();
         }
 
-        #region old code
+        #region Events
         private void DataForm_Load(object sender, EventArgs e) {
-
             // todo : load data on enter!
         }
-
-        private void loadDataToolStripMenuItem_Click(object sender, EventArgs e) {
-
-            JavaScriptSerializer r = new JavaScriptSerializer();
-
-            objects = r.Deserialize<University>(File.ReadAllText("Data.json"));
-
-            foreach (Student a in objects.Students) {
-                list1.Items.Add(a.Name + " " + a.Surname);
+        private void initializeDataToolStripMenuItem_Click(object sender, EventArgs e) {
+            InitializeUniversityData();
+        }
+        private void btnLoad_Click(object sender, EventArgs e) {
+            if (NewUniversity == null) {
+                LoadUniversityData();
             }
-
-            for (int i = 0; i < objects.Courses.Count - 1; i++) {
-
-                listBox1.Items.Add(objects.Courses[i].Code + "--" + objects.Courses[i].Subject);
-            }
-
-
-            foreach (Professor k in objects.Professors) {
-                list3.Items.Add(string.Format("{0}  {1}", k.Name, k.Surname));
+            else {
+                string message = "Loading data from json will erase all current data. Are you sure you  want to continue?";
+                string caption = "Loading University Data";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes) {
+                    LoadUniversityData();
+                }
             }
         }
+        private void btnSave_Click(object sender, EventArgs e) {
+            SaveUniversityData();
+        }
+        private void btnAdd_Click(object sender, EventArgs e) {
+            AddSchedule();
+        }
+        private void btnRemove_Click(object sender, EventArgs e) {
 
-        private void saveDataToolStripMenuItem_Click(object sender, EventArgs e) {
-            JavaScriptSerializer save_Serializer = new JavaScriptSerializer();
-
-            File.WriteAllText("Data.json", save_Serializer.Serialize(objects));
         }
         #endregion
 
-        #region new code
-        private void DataForm1_Load(object sender, EventArgs e) {
+        #region Methods
+        private void RefreshViews() {
+            foreach (Student student in NewUniversity.Students) {
+                list1.Items.Add(student.Name + " " + student.Surname);
+            }
 
-            // todo : load data on enter!
+            foreach (Course course in NewUniversity.Courses) {
+                listBox1.Items.Add(course.Code + "--" + course.Subject);
+            }
+
+
+            foreach (Professor professor in NewUniversity.Professors) {
+
+                list3.Items.Add(string.Format("{0}  {1}", professor.Name, professor.Surname));
+            }
         }
-
-        private void initializeDedomenaToolStripMenuItem_Click(object sender, EventArgs e) {
-
-            objects.InitUniversity();
-
-            foreach (Student a in objects.Students) {
-                list1.Items.Add(a.Name + " " + a.Surname);
-            }
-
-            foreach (Course bb in objects.Courses) {
-                listBox1.Items.Add(bb.Code + "--" + bb.Subject);
-            }
-
-
-            foreach (Professor cc1 in objects.Professors) {
-
-                list3.Items.Add(string.Format("{0}  {1}", cc1.Name, cc1.Surname));
-            }
-
-            //should run only once!
-            button11.Hide();
-        }
-
-        private void button9_Click(object sender, EventArgs e) {
-
-            JavaScriptSerializer GG = new JavaScriptSerializer();
-
-            objects = GG.Deserialize<University>(File.ReadAllText("Data.json"));
-
-            foreach (Student a in objects.Students) {
-                list1.Items.Add(a.Name + " " + a.Surname);
-            }
-
-            for (int i = 0; i < objects.Courses.Count - 1; i++) {
-
-                listBox1.Items.Add(objects.Courses[i].Code + "--" + objects.Courses[i].Subject);
-            }
-
-            // we do a loop
-            foreach (Professor cc1 in objects.Professors) {
-                // we add to the list
-                list3.Items.Add(string.Format("{0}  {1}", cc1.Name, cc1.Surname));
-            }
-
-        }
-
-        private void button10_Click(object sender, EventArgs e) {
-            JavaScriptSerializer ff = new JavaScriptSerializer();
-
-            File.WriteAllText("Data.json", ff.Serialize(objects));
-        }
-
-        private void ctrlExit_Click(object sender, EventArgs e) {
-
+        private void AddSchedule() {
             try {
 
                 // TODO: 1. CANNOT ADD SAME STUDENT + PROFESSOR IN SAME DATE & HOUR
@@ -118,75 +75,47 @@ namespace UniversityApp.WUI {
 
                 // TODO: 3. A PROFESSOR CANNOT TEACH MORE THAN 4 COURSES PER DAY AND 40 COURSES PER WEEK
 
-                objects.ScheduleList.Add(new Schedule() { Course = listBox1.SelectedItem.ToString(), Student = list1.SelectedItem.ToString(), Professor = list3.SelectedItem.ToString(), Calendar = dateTimePicker2.Value });
+
+                // todo : display on a grid??
+
+                // todo: add exception handling?
+
+                NewUniversity.ScheduleList.Add(new Schedule() { Course = listBox1.SelectedItem.ToString(), Student = list1.SelectedItem.ToString(), Professor = list3.SelectedItem.ToString(), Calendar = dateTimePicker2.Value });
 
                 ctrlSchedule.Items.Clear();
-                foreach (var AA in objects.ScheduleList) {
+                foreach (var AA in NewUniversity.ScheduleList) {
 
                     ctrlSchedule.Items.Add(AA.Calendar + " | " + AA.Course + " | " + AA.Student + " | " + AA.Professor);
 
                 }
             }
-            catch { 
-            
+            catch {
+
             }
             finally {
                 MessageBox.Show("all ok!");
 
             }
         }
+        private void InitializeUniversityData() {
+            NewUniversity = new University();
+            NewUniversity.InitUniversity();
+            RefreshViews();
+        }
+        private void SaveUniversityData() {
+            (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);
+        }
+        private void LoadUniversityData() {
+            NewUniversity = (new JsonHandler(_jsonFile)).DeserializeFromJson();
+            RefreshViews();
+        }
+        private void validate_professorCourse_with_studentCourse() {
 
-        public void validate_professorCourse_with_studentCourse() { 
-        
             //TODO: ???
 
         }
 
         #endregion
-
-        private void button11_Click(object sender, EventArgs e) {
-
-            objects.InitUniversity();
-
-            foreach (Student a in objects.Students) {
-                list1.Items.Add(a.Name + " " + a.Surname);
-            }
-
-            foreach (Course bb in objects.Courses) {
-                listBox1.Items.Add(bb.Code + "--" + bb.Subject);
-            }
-
-
-            foreach (Professor cc1 in objects.Professors) {
-
-                list3.Items.Add(string.Format("{0}  {1}", cc1.Name, cc1.Surname));
-            }
-
-            //should run only once!
-            button11.Hide();
-        }
-
-        private void addToScheduleToolStripMenuItem_Click(object sender, EventArgs e) {
-
-            // todo : display on a grid??
-
-            // todo: add exception handling?
-                objects.ScheduleList.Add(new Schedule() { 
-                    Course = listBox1.SelectedItem.ToString(), Student = list1.SelectedItem.ToString()
-                        , Professor = list3.SelectedItem.ToString(), Calendar = dateTimePicker2.Value });
-
-                ctrlSchedule.Items.Clear();
-                foreach (var AA in objects.ScheduleList) {
-
-                    ctrlSchedule.Items.Add(
-                        AA.Calendar + " " + 
-                        AA.Course + " " + 
-                        AA.Student + " " + 
-                        AA.Professor);
-
-                }
-        
-        }
 
     }
 }

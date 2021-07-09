@@ -21,10 +21,6 @@ namespace UniversityApp.Impl {
         }
 
         public void InitUniversity() {
-
-
-            // TODO: MUST IMPLEMENT ENUMERATION FOR CATEGORY ?
-
             Courses.Add( new Course() {
                  
                 Code = "1",
