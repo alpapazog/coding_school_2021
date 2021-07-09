@@ -152,10 +152,12 @@ namespace UniversityApp.WUI {
             // dataGridStudents
             // 
             this.dataGridStudents.AllowUserToOrderColumns = true;
+            this.dataGridStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStudents.Location = new System.Drawing.Point(72, 86);
             this.dataGridStudents.MultiSelect = false;
             this.dataGridStudents.Name = "dataGridStudents";
+            this.dataGridStudents.RowHeadersVisible = false;
             this.dataGridStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridStudents.Size = new System.Drawing.Size(323, 150);
             this.dataGridStudents.TabIndex = 16;
@@ -163,10 +165,12 @@ namespace UniversityApp.WUI {
             // dataGridProfessors
             // 
             this.dataGridProfessors.AllowUserToOrderColumns = true;
+            this.dataGridProfessors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridProfessors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProfessors.Location = new System.Drawing.Point(72, 242);
             this.dataGridProfessors.MultiSelect = false;
             this.dataGridProfessors.Name = "dataGridProfessors";
+            this.dataGridProfessors.RowHeadersVisible = false;
             this.dataGridProfessors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridProfessors.Size = new System.Drawing.Size(323, 150);
             this.dataGridProfessors.TabIndex = 17;
@@ -174,10 +178,12 @@ namespace UniversityApp.WUI {
             // dataGridCourses
             // 
             this.dataGridCourses.AllowUserToOrderColumns = true;
+            this.dataGridCourses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCourses.Location = new System.Drawing.Point(401, 86);
             this.dataGridCourses.MultiSelect = false;
             this.dataGridCourses.Name = "dataGridCourses";
+            this.dataGridCourses.RowHeadersVisible = false;
             this.dataGridCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridCourses.Size = new System.Drawing.Size(323, 150);
             this.dataGridCourses.TabIndex = 18;
@@ -187,6 +193,7 @@ namespace UniversityApp.WUI {
             this.dataGridSchedules.AllowUserToAddRows = false;
             this.dataGridSchedules.AllowUserToDeleteRows = false;
             this.dataGridSchedules.AllowUserToOrderColumns = true;
+            this.dataGridSchedules.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSchedules.Location = new System.Drawing.Point(72, 486);
             this.dataGridSchedules.Name = "dataGridSchedules";
