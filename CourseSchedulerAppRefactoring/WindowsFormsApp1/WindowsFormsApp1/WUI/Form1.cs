@@ -256,14 +256,14 @@ namespace UniversityApp.WUI {
             try {
                 switch (obj) {
                     case "Student":
-                        dataGridViewPage3.DataSource = NewUniversity.Students;
+                        dataGridViewPage3.DataSource = GetStudentListGrouped();
                         dataGridViewPage3.Columns["Registration_Number"].HeaderText = "Registration Number";
                         break;
                     case "Professor":
-                        dataGridViewPage3.DataSource = NewUniversity.Professors;
+                        dataGridViewPage3.DataSource = GetProfessorListGrouped();
                         break;
                     case "Course":
-                        dataGridViewPage3.DataSource = NewUniversity.Courses;
+                        dataGridViewPage3.DataSource = GetCourseListGrouped();
                         break;
                     default:
                         break;
@@ -292,14 +292,14 @@ namespace UniversityApp.WUI {
             try {
                 switch (obj) {
                     case "Student":
-                        dataGridViewPage4.DataSource = NewUniversity.Students;
+                        dataGridViewPage4.DataSource = GetStudentListGrouped();
                         dataGridViewPage4.Columns["Registration_Number"].HeaderText = "Registration Number";
                         break;
                     case "Professor":
-                        dataGridViewPage4.DataSource = NewUniversity.Professors;
+                        dataGridViewPage4.DataSource = GetProfessorListGrouped();
                         break;
                     case "Course":
-                        dataGridViewPage4.DataSource = NewUniversity.Courses;
+                        dataGridViewPage4.DataSource = GetCourseListGrouped();
                         break;
                     default:
                         break;
@@ -337,6 +337,128 @@ namespace UniversityApp.WUI {
             metroSetLabel3.Text = string.Format("Professor: {0}\nStudent: {1}\nSubject: {2}\nDate and Time: {3}", professorName, studentName, course.Subject, newSchedule.Calendar.ToString());
         }
 
+
+        public List<Student> GetStudentListGrouped() {
+
+            List<Student> studentList = new List<Student>();
+            int professorIndex = wizardPages1.Order.FindIndex(x => x == "Professor");
+            int courseIndex = wizardPages1.Order.FindIndex(x => x == "Course");
+            if (professorIndex != -1 && courseIndex !=-1) {
+                DataGridViewRow professorRow = wizardPages1.ObjectOrder[professorIndex];
+                Professor professor = NewUniversity.Professors.Find(x => x.Id == (Guid)professorRow.Cells[4].Value);
+                DataGridViewRow courseRow = wizardPages1.ObjectOrder[courseIndex];
+                Course course = NewUniversity.Courses.Find(x => x.Id == (Guid)courseRow.Cells[4].Value);
+                foreach (Student s in NewUniversity.Students) {
+                        if (professor.ValidCourseCategories.Exists(x => x == course.Category) && s.ValidCourseCategories.Exists(x => x == course.Category) && !studentList.Exists(x => x == s)) {
+                            studentList.Add(s);
+                        }
+                }
+                return studentList;
+            }
+            if (professorIndex != -1) {
+                DataGridViewRow professorRow = wizardPages1.ObjectOrder[professorIndex];
+                Professor professor = NewUniversity.Professors.Find(x => x.Id == (Guid)professorRow.Cells[4].Value);
+                foreach (Student s in NewUniversity.Students) {
+                    foreach(CourseCategoryEnum c in s.ValidCourseCategories) {
+                        if (professor.ValidCourseCategories.Exists(x=>x==c) && !studentList.Exists(x=>x==s)) {
+                            studentList.Add(s);
+                        }
+                    }
+                }
+                return studentList;
+            }
+            if (courseIndex != -1) {
+                DataGridViewRow courseRow = wizardPages1.ObjectOrder[courseIndex];
+                Course course = NewUniversity.Courses.Find(x => x.Id == (Guid)courseRow.Cells[4].Value);
+                foreach (Student s in NewUniversity.Students) {
+                    if (s.ValidCourseCategories.Exists(x => x == course.Category) && !studentList.Exists(x => x == s)) {
+                        studentList.Add(s);
+                    }
+                }
+                return studentList;
+            }
+            return studentList;
+        }
+        public List<Professor> GetProfessorListGrouped() {
+
+            List<Professor> professorList = new List<Professor>();
+            int studentIndex = wizardPages1.Order.FindIndex(x => x == "Student");
+            int courseIndex = wizardPages1.Order.FindIndex(x => x == "Course");
+            if (studentIndex != -1 && courseIndex != -1) {
+                DataGridViewRow studentRow = wizardPages1.ObjectOrder[studentIndex];
+                Student student = NewUniversity.Students.Find(x => x.Id == (Guid)studentRow.Cells[4].Value);
+                DataGridViewRow courseRow = wizardPages1.ObjectOrder[courseIndex];
+                Course course = NewUniversity.Courses.Find(x => x.Id == (Guid)courseRow.Cells[4].Value);
+                foreach (Professor p in NewUniversity.Professors) {
+                    if (student.ValidCourseCategories.Exists(x => x == course.Category) && p.ValidCourseCategories.Exists(x => x == course.Category) && !professorList.Exists(x => x == p)) {
+                        professorList.Add(p);
+                    }
+                }
+                return professorList;
+            }
+            if (studentIndex != -1) {
+                DataGridViewRow studentRow = wizardPages1.ObjectOrder[studentIndex];
+                Student student = NewUniversity.Students.Find(x => x.Id == (Guid)studentRow.Cells[4].Value);
+                foreach (Professor p in NewUniversity.Professors) {
+                    foreach (CourseCategoryEnum c in p.ValidCourseCategories) {
+                        if (student.ValidCourseCategories.Exists(x => x == c) && !professorList.Exists(x => x == p)) {
+                            professorList.Add(p);
+                        }
+                    }
+                }
+                return professorList;
+            }
+            if (courseIndex != -1) {
+                DataGridViewRow courseRow = wizardPages1.ObjectOrder[courseIndex];
+                Course course = NewUniversity.Courses.Find(x => x.Id == (Guid)courseRow.Cells[4].Value);
+                foreach (Professor p in NewUniversity.Professors) {
+                    if (p.ValidCourseCategories.Exists(x => x == course.Category) && !professorList.Exists(x => x == p)) {
+                        professorList.Add(p);
+                    }
+                }
+                return professorList;
+            }
+            return professorList;
+        }
+        public List<Course> GetCourseListGrouped() {
+
+            List<Course> courseList = new List<Course>();
+            int studentIndex = wizardPages1.Order.FindIndex(x => x == "Student");
+            int professorIndex = wizardPages1.Order.FindIndex(x => x == "Professor");
+            if (studentIndex != -1 && professorIndex != -1) {
+                DataGridViewRow studentRow = wizardPages1.ObjectOrder[studentIndex];
+                Student student = NewUniversity.Students.Find(x => x.Id == (Guid)studentRow.Cells[4].Value);
+                DataGridViewRow professorRow = wizardPages1.ObjectOrder[professorIndex];
+                Professor professor = NewUniversity.Professors.Find(x => x.Id == (Guid)professorRow.Cells[4].Value);
+                foreach (Course c in NewUniversity.Courses) {
+                    if (student.ValidCourseCategories.Exists(x => x == c.Category) && professor.ValidCourseCategories.Exists(x => x == c.Category) && !courseList.Exists(x => x == c)) {
+                        courseList.Add(c);
+                    }
+                }
+                return courseList;
+            }
+            if (studentIndex != -1) {
+                DataGridViewRow studentRow = wizardPages1.ObjectOrder[studentIndex];
+                Student student = NewUniversity.Students.Find(x => x.Id == (Guid)studentRow.Cells[4].Value);
+                foreach (Course c in NewUniversity.Courses) {
+                        if (student.ValidCourseCategories.Exists(x => x == c.Category) && !courseList.Exists(x => x == c)) {
+                            courseList.Add(c);
+                        }
+                }
+                return courseList;
+            }
+            if (professorIndex != -1) {
+                DataGridViewRow professorRow = wizardPages1.ObjectOrder[professorIndex];
+                Professor professor = NewUniversity.Professors.Find(x => x.Id == (Guid)professorRow.Cells[4].Value);
+                foreach (Course c in NewUniversity.Courses) {
+                    if (professor.ValidCourseCategories.Exists(x => x == c.Category) && !courseList.Exists(x => x == c)) {
+                        courseList.Add(c);
+                    }
+                }
+                return courseList;
+            }
+            return courseList;
+        }
         #endregion
 
     }
