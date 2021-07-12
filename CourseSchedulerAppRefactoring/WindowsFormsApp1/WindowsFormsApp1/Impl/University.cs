@@ -19,6 +19,7 @@ namespace UniversityApp.Impl {
             Professors = new List<Professor>();
             Courses = new List<Course>();
             ScheduleList = new List<Schedule>();
+            Preferences = new SchedulePreferences();
         }
 
         public void InitUniversity() {

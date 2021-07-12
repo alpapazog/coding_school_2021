@@ -26,22 +26,19 @@ namespace UniversityApp.Impl {
             Professor professor = University.Professors.Find(x => x.Id == newSchedule.ProfessorId);
             Student student = University.Students.Find(x => x.Id == newSchedule.StudentId);
 
-            //TODO1: Course category matches student validcourses
-            IsValidated = (IsValidated && CourseCategoryValidForStudent(student, course));
+            bool val1 = CourseCategoryValidForStudent(student, course);
 
-            //TODO2: Course category matches professor validcourses
-            IsValidated = (IsValidated && CourseCategoryValidForProfessor(professor, course));
+            bool val2 = CourseCategoryValidForProfessor(professor, course);
 
-            //TODO3: Schedule is not duplicate in schedule list
-            IsValidated = (IsValidated && CheckScheduleDuplicity(newSchedule));
+            bool val3 = CheckScheduleDuplicity(newSchedule);
 
+            bool val4 = CheckStudentTimeAvailability(newSchedule);
 
-            //TODO4: Schedule complies with preferences
-            //TODO5: Schedule for student cannot be in same time no matter what
-            IsValidated = (IsValidated && CheckStudentTimeAvailability(newSchedule));
+            bool val5 = CheckProfessorAvailability(newSchedule);
 
-            //TODO6: Schedule for professor can only be in same time if student is different and course is same
-            IsValidated = (IsValidated && CheckProfessorAvailability(newSchedule));
+            bool val6 = CheckPreferenceProfessorMaxCoursesPerDay(newSchedule);
+
+            IsValidated = val1 && val2 && val3 && val4 && val5 && val6;
 
             File.AppendAllText(LogFile, _stringBuilder.ToString());
             _stringBuilder.Clear();
@@ -137,5 +134,17 @@ namespace UniversityApp.Impl {
             }
             return false;
         }
+
+        public bool CheckPreferenceProfessorMaxCoursesPerDay(Schedule newSchedule) {
+            int coursesPerDay = University.ScheduleList.FindAll(x => x.Calendar.Date == newSchedule.Calendar.Date && x.ProfessorId == newSchedule.ProfessorId).Count;
+            if (coursesPerDay+1 <= University.Preferences.MaxProfessorCoursesPerDay) {
+                return true;
+            }
+            else {
+                ErrorMessage = string.Concat(ErrorMessage, "\n", string.Format("Professors cannot have more than {0} courses per day.", University.Preferences.MaxProfessorCoursesPerDay));
+                return false;
+            }
+        }
+
     }
 }

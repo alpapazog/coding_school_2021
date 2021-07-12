@@ -33,32 +33,26 @@ namespace UniversityApp.WUI {
             dataGridCourses.BackgroundColor = System.Drawing.Color.White;
             dataGridSchedules.BackgroundColor = System.Drawing.Color.White;
         }
-        private void initializeDataToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        private void btnInitiateData_Click(object sender, EventArgs e) {
             InitializeUniversityData();
         }
-        private void btnLoad_Click(object sender, EventArgs e) {
-            if (NewUniversity == null) {
-                LoadUniversityData();
-            }
-            else {
-                string message = "Loading data from json will erase all current data. Are you sure you  want to continue?";
-                string caption = "Loading University Data";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes) {
-                    LoadUniversityData();
-                }
-            }
+
+        private void btnLoadData_Click(object sender, EventArgs e) {
+            LoadUniversityData();
         }
-        private void btnSave_Click(object sender, EventArgs e) {
+
+        private void btnSaveData_Click(object sender, EventArgs e) {
             SaveUniversityData();
         }
-        private void btnAdd_Click(object sender, EventArgs e) {
-            //AddSchedule();
+
+        private void bntExit_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
+
         private void btnRemove_Click(object sender, EventArgs e) {
             RemoveSchedules();
         }
-
         #endregion
 
         #region Methods
@@ -77,7 +71,6 @@ namespace UniversityApp.WUI {
             studentName = string.Format("{0} {1}", student.Name, student.Surname);
             course = NewUniversity.Courses.Find(x => x.Id == schedule.CourseId);
         }
-
         private void InitDataGrids() {
             BindingSourceStudents = new BindingSource();
             BindingSourceProfessors = new BindingSource();
@@ -97,7 +90,6 @@ namespace UniversityApp.WUI {
             RefreshSceduleGrid();
 
         }
-
         private bool AddSchedule(Schedule newSchedule) {
 
             ScheduleValidate scheduleValidate = new ScheduleValidate(NewUniversity, _logFile);
@@ -136,6 +128,14 @@ namespace UniversityApp.WUI {
             (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);
         }
         private void LoadUniversityData() {
+            if (NewUniversity != null) {
+                string message = "Loading data from json will erase all current data. Are you sure you  want to continue?";
+                string caption = "Loading University Data";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo);
+                if (result == DialogResult.No) {
+                    return;
+                }
+            }
             NewUniversity = (new JsonHandler(_jsonFile)).DeserializeFromJson();
             InitDataGrids();
         }
@@ -205,7 +205,7 @@ namespace UniversityApp.WUI {
         private void metroBtnAddSchedule_Click(object sender, EventArgs e) {
             if (AddSchedule(wizardPages1.NewSchedule)) {
                 wizardPages1.SelectedTab = tabPageStart;
-                MessageBox.Show("Schedule successfully added.");
+                MessageBox.Show("Schedule added successfully.");
             }
 
         }
@@ -461,6 +461,7 @@ namespace UniversityApp.WUI {
         }
         #endregion
 
+  
     }
 
     class WizardPages : TabControl {

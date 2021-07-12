@@ -27,8 +27,6 @@ namespace UniversityApp.WUI {
         /// </summary>
         private void InitializeComponent() {
             this.btnRemove = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.dataGridStudents = new System.Windows.Forms.DataGridView();
             this.dataGridProfessors = new System.Windows.Forms.DataGridView();
             this.dataGridCourses = new System.Windows.Forms.DataGridView();
@@ -36,6 +34,12 @@ namespace UniversityApp.WUI {
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.metroSetTabControl1 = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tabHome = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.metroSetPanel1 = new MetroSet_UI.Controls.MetroSetPanel();
+            this.bntExit = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnPreferences = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnSaveData = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnInitiateData = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnLoadData = new MetroSet_UI.Controls.MetroSetButton();
             this.tabSchedule = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.wizardPages1 = new UniversityApp.WUI.WizardPages();
             this.tabPageStart = new System.Windows.Forms.TabPage();
@@ -79,6 +83,8 @@ namespace UniversityApp.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCourses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSchedules)).BeginInit();
             this.metroSetTabControl1.SuspendLayout();
+            this.tabHome.SuspendLayout();
+            this.metroSetPanel1.SuspendLayout();
             this.tabSchedule.SuspendLayout();
             this.wizardPages1.SuspendLayout();
             this.tabPageStart.SuspendLayout();
@@ -105,26 +111,6 @@ namespace UniversityApp.WUI {
             this.btnRemove.Text = "Remove Schedule";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(439, 450);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(143, 32);
-            this.btnLoad.TabIndex = 11;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(588, 450);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(143, 32);
-            this.btnSave.TabIndex = 12;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dataGridStudents
             // 
@@ -237,6 +223,7 @@ namespace UniversityApp.WUI {
             // tabHome
             // 
             this.tabHome.BaseColor = System.Drawing.Color.White;
+            this.tabHome.Controls.Add(this.metroSetPanel1);
             this.tabHome.Font = null;
             this.tabHome.ImageIndex = 0;
             this.tabHome.ImageKey = null;
@@ -252,12 +239,164 @@ namespace UniversityApp.WUI {
             this.tabHome.ThemeName = "MetroLite";
             this.tabHome.ToolTipText = null;
             // 
+            // metroSetPanel1
+            // 
+            this.metroSetPanel1.BackgroundColor = System.Drawing.Color.White;
+            this.metroSetPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.metroSetPanel1.BorderThickness = 1;
+            this.metroSetPanel1.Controls.Add(this.bntExit);
+            this.metroSetPanel1.Controls.Add(this.btnPreferences);
+            this.metroSetPanel1.Controls.Add(this.btnSaveData);
+            this.metroSetPanel1.Controls.Add(this.btnInitiateData);
+            this.metroSetPanel1.Controls.Add(this.btnLoadData);
+            this.metroSetPanel1.IsDerivedStyle = true;
+            this.metroSetPanel1.Location = new System.Drawing.Point(3, 3);
+            this.metroSetPanel1.Name = "metroSetPanel1";
+            this.metroSetPanel1.Size = new System.Drawing.Size(221, 492);
+            this.metroSetPanel1.Style = MetroSet_UI.Enums.Style.Light;
+            this.metroSetPanel1.StyleManager = null;
+            this.metroSetPanel1.TabIndex = 0;
+            this.metroSetPanel1.ThemeAuthor = "Narwin";
+            this.metroSetPanel1.ThemeName = "MetroLite";
+            // 
+            // bntExit
+            // 
+            this.bntExit.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.bntExit.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.bntExit.DisabledForeColor = System.Drawing.Color.Gray;
+            this.bntExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bntExit.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.bntExit.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.bntExit.HoverTextColor = System.Drawing.Color.White;
+            this.bntExit.IsDerivedStyle = true;
+            this.bntExit.Location = new System.Drawing.Point(3, 169);
+            this.bntExit.Name = "bntExit";
+            this.bntExit.NormalBorderColor = System.Drawing.Color.White;
+            this.bntExit.NormalColor = System.Drawing.Color.White;
+            this.bntExit.NormalTextColor = System.Drawing.Color.Gray;
+            this.bntExit.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.bntExit.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.bntExit.PressTextColor = System.Drawing.Color.White;
+            this.bntExit.Size = new System.Drawing.Size(214, 47);
+            this.bntExit.Style = MetroSet_UI.Enums.Style.Custom;
+            this.bntExit.StyleManager = null;
+            this.bntExit.TabIndex = 5;
+            this.bntExit.Text = "Exit";
+            this.bntExit.ThemeAuthor = "Narwin";
+            this.bntExit.ThemeName = "MetroLite";
+            this.bntExit.Click += new System.EventHandler(this.bntExit_Click);
+            // 
+            // btnPreferences
+            // 
+            this.btnPreferences.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnPreferences.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnPreferences.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnPreferences.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnPreferences.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnPreferences.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnPreferences.HoverTextColor = System.Drawing.Color.White;
+            this.btnPreferences.IsDerivedStyle = true;
+            this.btnPreferences.Location = new System.Drawing.Point(3, 126);
+            this.btnPreferences.Name = "btnPreferences";
+            this.btnPreferences.NormalBorderColor = System.Drawing.Color.White;
+            this.btnPreferences.NormalColor = System.Drawing.Color.White;
+            this.btnPreferences.NormalTextColor = System.Drawing.Color.Gray;
+            this.btnPreferences.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnPreferences.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnPreferences.PressTextColor = System.Drawing.Color.White;
+            this.btnPreferences.Size = new System.Drawing.Size(214, 47);
+            this.btnPreferences.Style = MetroSet_UI.Enums.Style.Custom;
+            this.btnPreferences.StyleManager = null;
+            this.btnPreferences.TabIndex = 4;
+            this.btnPreferences.Text = "Preferences";
+            this.btnPreferences.ThemeAuthor = "Narwin";
+            this.btnPreferences.ThemeName = "MetroLite";
+            // 
+            // btnSaveData
+            // 
+            this.btnSaveData.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnSaveData.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnSaveData.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnSaveData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSaveData.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnSaveData.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnSaveData.HoverTextColor = System.Drawing.Color.White;
+            this.btnSaveData.IsDerivedStyle = true;
+            this.btnSaveData.Location = new System.Drawing.Point(3, 84);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.NormalBorderColor = System.Drawing.Color.White;
+            this.btnSaveData.NormalColor = System.Drawing.Color.White;
+            this.btnSaveData.NormalTextColor = System.Drawing.Color.Gray;
+            this.btnSaveData.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnSaveData.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnSaveData.PressTextColor = System.Drawing.Color.White;
+            this.btnSaveData.Size = new System.Drawing.Size(214, 47);
+            this.btnSaveData.Style = MetroSet_UI.Enums.Style.Custom;
+            this.btnSaveData.StyleManager = null;
+            this.btnSaveData.TabIndex = 3;
+            this.btnSaveData.Text = "Save Data";
+            this.btnSaveData.ThemeAuthor = "Narwin";
+            this.btnSaveData.ThemeName = "MetroLite";
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+            // 
+            // btnInitiateData
+            // 
+            this.btnInitiateData.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnInitiateData.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnInitiateData.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnInitiateData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnInitiateData.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnInitiateData.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnInitiateData.HoverTextColor = System.Drawing.Color.White;
+            this.btnInitiateData.IsDerivedStyle = true;
+            this.btnInitiateData.Location = new System.Drawing.Point(4, 3);
+            this.btnInitiateData.Name = "btnInitiateData";
+            this.btnInitiateData.NormalBorderColor = System.Drawing.Color.White;
+            this.btnInitiateData.NormalColor = System.Drawing.Color.White;
+            this.btnInitiateData.NormalTextColor = System.Drawing.Color.Gray;
+            this.btnInitiateData.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnInitiateData.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnInitiateData.PressTextColor = System.Drawing.Color.White;
+            this.btnInitiateData.Size = new System.Drawing.Size(214, 47);
+            this.btnInitiateData.Style = MetroSet_UI.Enums.Style.Custom;
+            this.btnInitiateData.StyleManager = null;
+            this.btnInitiateData.TabIndex = 2;
+            this.btnInitiateData.Text = "Initiate Data";
+            this.btnInitiateData.ThemeAuthor = "Narwin";
+            this.btnInitiateData.ThemeName = "MetroLite";
+            this.btnInitiateData.Click += new System.EventHandler(this.btnInitiateData_Click);
+            // 
+            // btnLoadData
+            // 
+            this.btnLoadData.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnLoadData.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnLoadData.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnLoadData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnLoadData.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnLoadData.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnLoadData.HoverTextColor = System.Drawing.Color.White;
+            this.btnLoadData.IsDerivedStyle = true;
+            this.btnLoadData.Location = new System.Drawing.Point(3, 43);
+            this.btnLoadData.Name = "btnLoadData";
+            this.btnLoadData.NormalBorderColor = System.Drawing.Color.White;
+            this.btnLoadData.NormalColor = System.Drawing.Color.White;
+            this.btnLoadData.NormalTextColor = System.Drawing.Color.Gray;
+            this.btnLoadData.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnLoadData.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnLoadData.PressTextColor = System.Drawing.Color.White;
+            this.btnLoadData.Size = new System.Drawing.Size(214, 47);
+            this.btnLoadData.Style = MetroSet_UI.Enums.Style.Custom;
+            this.btnLoadData.StyleManager = null;
+            this.btnLoadData.TabIndex = 1;
+            this.btnLoadData.Text = "Load Data";
+            this.btnLoadData.ThemeAuthor = "Narwin";
+            this.btnLoadData.ThemeName = "MetroLite";
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
+            // 
             // tabSchedule
             // 
             this.tabSchedule.BaseColor = System.Drawing.Color.White;
             this.tabSchedule.Controls.Add(this.wizardPages1);
-            this.tabSchedule.Controls.Add(this.btnSave);
-            this.tabSchedule.Controls.Add(this.btnLoad);
             this.tabSchedule.Controls.Add(this.dataGridSchedules);
             this.tabSchedule.Controls.Add(this.btnRemove);
             this.tabSchedule.Font = null;
@@ -1010,6 +1149,8 @@ namespace UniversityApp.WUI {
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCourses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSchedules)).EndInit();
             this.metroSetTabControl1.ResumeLayout(false);
+            this.tabHome.ResumeLayout(false);
+            this.metroSetPanel1.ResumeLayout(false);
             this.tabSchedule.ResumeLayout(false);
             this.wizardPages1.ResumeLayout(false);
             this.tabPageStart.ResumeLayout(false);
@@ -1049,8 +1190,6 @@ namespace UniversityApp.WUI {
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView dataGridStudents;
         private System.Windows.Forms.DataGridView dataGridProfessors;
         private System.Windows.Forms.DataGridView dataGridCourses;
@@ -1096,5 +1235,11 @@ namespace UniversityApp.WUI {
         private MetroSet_UI.Controls.MetroSetDefaultButton metroSetDefaultButton3;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
+        private MetroSet_UI.Controls.MetroSetPanel metroSetPanel1;
+        private MetroSet_UI.Controls.MetroSetButton btnLoadData;
+        private MetroSet_UI.Controls.MetroSetButton btnSaveData;
+        private MetroSet_UI.Controls.MetroSetButton btnInitiateData;
+        private MetroSet_UI.Controls.MetroSetButton bntExit;
+        private MetroSet_UI.Controls.MetroSetButton btnPreferences;
     }
 }
