@@ -19,6 +19,7 @@ namespace UniversityApp.WUI {
         private BindingSource BindingSourceSchedules;
 
         private string _jsonFile = "Data.json";
+        private string _logFile = "Log.txt";
 
         public DataForm1() {
             InitializeComponent();
@@ -58,36 +59,46 @@ namespace UniversityApp.WUI {
         #endregion
 
         #region Methods
-        private void RefreshDataGrids() {
-            dataGridCourses.Refresh();
-            dataGridProfessors.Refresh();
-            dataGridStudents.Refresh();
-            dataGridSchedules.Refresh();
+        private void AddToScheduleGrid(Schedule schedule) {
+            Professor professor = NewUniversity.Professors.Find(x => x.Id == schedule.ProfessorId);
+            string professorName = string.Format("{0} {1}", professor.Name, professor.Surname);
+
+            Student student = NewUniversity.Students.Find(x => x.Id == schedule.StudentId);
+            string studentName = string.Format("{0} {1}", student.Name, student.Surname);
+
+            Course course = NewUniversity.Courses.Find(x => x.Id == schedule.CourseId);
+
+            dataGridSchedules.Rows.Add(professorName, studentName, course.Subject, schedule.Calendar.ToString()) ;
         }
         private void InitDataGrids() {
             BindingSourceStudents = new BindingSource();
             BindingSourceProfessors = new BindingSource();
             BindingSourceCourses = new BindingSource();
-            BindingSourceSchedules = new BindingSource();
 
             BindingSourceStudents.DataSource = NewUniversity.Students;
             BindingSourceProfessors.DataSource = NewUniversity.Professors;
             BindingSourceCourses.DataSource = NewUniversity.Courses;
-            BindingSourceSchedules.DataSource = NewUniversity.ScheduleList;
 
             dataGridCourses.DataSource = BindingSourceCourses;
             dataGridProfessors.DataSource = BindingSourceProfessors;
             dataGridStudents.DataSource = BindingSourceStudents;
-            dataGridSchedules.DataSource = BindingSourceSchedules;
 
             dataGridCourses.Columns["Id"].Visible = false;
             dataGridProfessors.Columns["Id"].Visible = false;
             dataGridStudents.Columns["Id"].Visible = false; ;
-            dataGridSchedules.Columns["Id"].Visible = true;
+
+            dataGridSchedules.ColumnCount = 4;
+            dataGridSchedules.Columns[0].Name = "Professor";
+            dataGridSchedules.Columns[1].Name = "Student";
+            dataGridSchedules.Columns[2].Name = "Course";
+            dataGridSchedules.Columns[3].Name = "Calendar";
+            foreach (var s in NewUniversity.ScheduleList) {
+                AddToScheduleGrid(s);
+            }
         }
         private void AddSchedule() {
             DataGridViewRow courseRow = dataGridCourses.SelectedRows[0];
-            DataGridViewRow professorRow = dataGridCourses.SelectedRows[0];
+            DataGridViewRow professorRow = dataGridProfessors.SelectedRows[0];
             DataGridViewRow studentRow = dataGridStudents.SelectedRows[0];
             Schedule newSchedule = new Schedule() {
                 CourseId = (Guid)courseRow.Cells["Id"].Value,
@@ -96,9 +107,13 @@ namespace UniversityApp.WUI {
             };
             newSchedule.Calendar = dateTimePickerDate.Value.Date + dateTimePickerTime.Value.TimeOfDay;
 
-            if (NewUniversity.ValidateNewSchedule(newSchedule)) {
+            ScheduleValidate scheduleValidate = new ScheduleValidate(NewUniversity, _logFile);
+            if (scheduleValidate.ValidateNewSchedule(newSchedule)) {
                 NewUniversity.ScheduleList.Add(newSchedule);
-                BindingSourceSchedules.ResetBindings(true);
+                AddToScheduleGrid(newSchedule);
+            }
+            else {
+                MessageBox.Show(scheduleValidate.ErrorMessage);
             }
 
 
@@ -119,7 +134,7 @@ namespace UniversityApp.WUI {
         private void InitializeUniversityData() {
             NewUniversity = new University();
             NewUniversity.InitUniversity();
-            RefreshDataGrids();
+            InitDataGrids();
         }
         private void SaveUniversityData() {
             (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);

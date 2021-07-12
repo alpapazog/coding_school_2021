@@ -64,7 +64,6 @@ namespace UniversityApp.Impl {
             });
 
             Students.Add(new Student() {
-                Id = Guid.NewGuid(),
                 Name = "Fotis",
                 Surname = "Chrysoulas",
                 Registration_Number = "1234",
@@ -73,7 +72,6 @@ namespace UniversityApp.Impl {
 
 
             Students.Add(new Student() {
-                Id = Guid.NewGuid(),
                 Name = "Dimitris",
                 Surname = "Raptodimos",
                 Registration_Number = "1235",
@@ -94,4 +92,3 @@ namespace UniversityApp.Impl {
     }
 
 }
-
