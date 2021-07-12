@@ -60,7 +60,7 @@ namespace UniversityApp.Impl {
             }
             catch (Exception e) {
                 ErrorMessage = "Exception thrown, check Log.txt for details";
-                _stringBuilder.Append(e.Message);
+                _stringBuilder.Append(e.ToString());
             }
             return false;
         }
@@ -77,7 +77,7 @@ namespace UniversityApp.Impl {
             }
             catch (Exception e) {
                 ErrorMessage = "Exception thrown, check Log.txt for details";
-                _stringBuilder.Append(e.Message);
+                _stringBuilder.Append(e.ToString());
             }
             return false;
         }
@@ -99,7 +99,7 @@ namespace UniversityApp.Impl {
             }
             catch (Exception e) {
                 ErrorMessage = "Exception thrown, check Log.txt for details.";
-                _stringBuilder.Append(e.Message);
+                _stringBuilder.Append(e.ToString());
             }
             return false;
         }
@@ -116,7 +116,7 @@ namespace UniversityApp.Impl {
             }
             catch (Exception e) {
                 ErrorMessage = "Exception thrown, check Log.txt for details";
-                _stringBuilder.Append(e.Message);
+                _stringBuilder.Append(e.ToString());
             }
             return false;
         }
@@ -133,7 +133,7 @@ namespace UniversityApp.Impl {
             }
             catch (Exception e) {
                 ErrorMessage = "Exception thrown, check Log.txt for details";
-                _stringBuilder.Append(e.Message);
+                _stringBuilder.Append(e.ToString());
             }
             return false;
         }
