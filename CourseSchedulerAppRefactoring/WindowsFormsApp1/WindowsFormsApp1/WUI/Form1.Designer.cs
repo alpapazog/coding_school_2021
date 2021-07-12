@@ -26,7 +26,7 @@ namespace UniversityApp.WUI {
         private void InitializeComponent() {
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -40,6 +40,7 @@ namespace UniversityApp.WUI {
             this.dataGridProfessors = new System.Windows.Forms.DataGridView();
             this.dataGridCourses = new System.Windows.Forms.DataGridView();
             this.dataGridSchedules = new System.Windows.Forms.DataGridView();
+            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProfessors)).BeginInit();
@@ -49,7 +50,7 @@ namespace UniversityApp.WUI {
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(489, 319);
+            this.btnAdd.Location = new System.Drawing.Point(565, 319);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(143, 32);
             this.btnAdd.TabIndex = 8;
@@ -67,12 +68,15 @@ namespace UniversityApp.WUI {
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // dateTimePicker2
+            // dateTimePickerTime
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(469, 279);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 10;
+            this.dateTimePickerTime.CustomFormat = "MM/dd/yyyy hh:mm";
+            this.dateTimePickerTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerTime.Location = new System.Drawing.Point(608, 293);
+            this.dateTimePickerTime.Name = "dateTimePickerTime";
+            this.dateTimePickerTime.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePickerTime.TabIndex = 10;
+            this.dateTimePickerTime.Value = new System.DateTime(2021, 7, 11, 9, 0, 0, 0);
             // 
             // btnLoad
             // 
@@ -201,9 +205,18 @@ namespace UniversityApp.WUI {
             this.dataGridSchedules.Size = new System.Drawing.Size(652, 150);
             this.dataGridSchedules.TabIndex = 19;
             // 
+            // dateTimePickerDate
+            // 
+            this.dateTimePickerDate.CustomFormat = "MM/dd/yyyy hh:mm";
+            this.dateTimePickerDate.Location = new System.Drawing.Point(506, 267);
+            this.dateTimePickerDate.Name = "dateTimePickerDate";
+            this.dateTimePickerDate.Size = new System.Drawing.Size(202, 20);
+            this.dateTimePickerDate.TabIndex = 20;
+            // 
             // DataForm1
             // 
             this.ClientSize = new System.Drawing.Size(809, 737);
+            this.Controls.Add(this.dateTimePickerDate);
             this.Controls.Add(this.dataGridSchedules);
             this.Controls.Add(this.dataGridCourses);
             this.Controls.Add(this.dataGridProfessors);
@@ -211,7 +224,7 @@ namespace UniversityApp.WUI {
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePickerTime);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.menuStrip1);
@@ -250,7 +263,7 @@ namespace UniversityApp.WUI {
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTime;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label6;
@@ -264,5 +277,6 @@ namespace UniversityApp.WUI {
         private System.Windows.Forms.DataGridView dataGridProfessors;
         private System.Windows.Forms.DataGridView dataGridCourses;
         private System.Windows.Forms.DataGridView dataGridSchedules;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDate;
     }
 }

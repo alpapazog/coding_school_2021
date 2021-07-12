@@ -26,11 +26,9 @@ namespace UniversityApp.WUI {
 
         #region Events
         private void DataForm_Load(object sender, EventArgs e) {
+            dateTimePickerTime.ShowUpDown = true;
             // todo : load data on enter!
         }
-
-        
-
         private void initializeDataToolStripMenuItem_Click(object sender, EventArgs e) {
             InitializeUniversityData();
         }
@@ -85,23 +83,33 @@ namespace UniversityApp.WUI {
             dataGridCourses.Columns["Id"].Visible = false;
             dataGridProfessors.Columns["Id"].Visible = false;
             dataGridStudents.Columns["Id"].Visible = false; ;
-            dataGridSchedules.Columns["Id"].Visible = false;
+            dataGridSchedules.Columns["Id"].Visible = true;
         }
         private void AddSchedule() {
+            DataGridViewRow courseRow = dataGridCourses.SelectedRows[0];
+            DataGridViewRow professorRow = dataGridCourses.SelectedRows[0];
+            DataGridViewRow studentRow = dataGridStudents.SelectedRows[0];
+            Schedule newSchedule = new Schedule() {
+                CourseId = (Guid)courseRow.Cells["Id"].Value,
+                ProfessorId = (Guid)professorRow.Cells["Id"].Value,
+                StudentId = (Guid)studentRow.Cells["Id"].Value,
+            };
+            newSchedule.Calendar = dateTimePickerDate.Value.Date + dateTimePickerTime.Value.TimeOfDay;
 
-                // TODO: 1. CANNOT ADD SAME STUDENT + PROFESSOR IN SAME DATE & HOUR
+            if (NewUniversity.ValidateNewSchedule(newSchedule)) {
+                NewUniversity.ScheduleList.Add(newSchedule);
+                BindingSourceSchedules.ResetBindings(true);
+            }
 
-                // TODO: 2. EACH STUDENT CANNOT HAVE MORE THAN 3 COURSES PER DAY!
 
-                // TODO: 3. A PROFESSOR CANNOT TEACH MORE THAN 4 COURSES PER DAY AND 40 COURSES PER WEEK
+            // TODO: 1. CANNOT ADD SAME STUDENT + PROFESSOR IN SAME DATE & HOUR
+
+            // TODO: 2. EACH STUDENT CANNOT HAVE MORE THAN 3 COURSES PER DAY!
+
+            // TODO: 3. A PROFESSOR CANNOT TEACH MORE THAN 4 COURSES PER DAY AND 40 COURSES PER WEEK
 
 
-                // todo : display on a grid??
-
-                // todo: add exception handling?
-
-                //NewUniversity.ScheduleList.Add(new Schedule() { Course = listBox1.SelectedItem.ToString(), Student = list1.SelectedItem.ToString(), Professor = list3.SelectedItem.ToString(), Calendar = dateTimePicker2.Value });
-
+            // todo: add exception handling?
         }
         private void RemoveSchedules() {
             foreach (DataGridViewRow row in dataGridSchedules.SelectedRows) {
@@ -120,12 +128,10 @@ namespace UniversityApp.WUI {
             NewUniversity = (new JsonHandler(_jsonFile)).DeserializeFromJson();
             InitDataGrids();
         }
-        private void validate_professorCourse_with_studentCourse() {
 
-            //TODO: ???
-
-        }
         #endregion
 
     }
+
+
 }

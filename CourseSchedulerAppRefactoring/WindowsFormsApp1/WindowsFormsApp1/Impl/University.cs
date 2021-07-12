@@ -13,6 +13,7 @@ namespace UniversityApp.Impl {
         public List<Course> Courses { get; set; }
         public List<Schedule> ScheduleList { get; set; }
 
+        public SchedulePreferences Preferences;
         public University() {
             Students = new List<Student>();
             Professors = new List<Professor>();
@@ -67,7 +68,7 @@ namespace UniversityApp.Impl {
                 Name = "Fotis",
                 Surname = "Chrysoulas",
                 Registration_Number = "1234",
-                CAN_LEARN = new List<CourseCategoryEnum>() { CourseCategoryEnum.Chemistry, CourseCategoryEnum.Financial }
+                ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Chemistry, CourseCategoryEnum.Financial }
             });
 
 
@@ -76,17 +77,19 @@ namespace UniversityApp.Impl {
                 Name = "Dimitris",
                 Surname = "Raptodimos",
                 Registration_Number = "1235",
-                CAN_LEARN = new List<CourseCategoryEnum>() { CourseCategoryEnum.Physics, CourseCategoryEnum.Financial } 
+                ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Physics, CourseCategoryEnum.Financial } 
             });
 
             Professors.Add(new Professor() {
                 Name = "Maria",
                 Surname = "Papadopoulou",
-                Rank = "1"
+                Rank = "1",
+                ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Chemistry, CourseCategoryEnum.Financial }
             });
 
 
         }
+        
 
     }
 
