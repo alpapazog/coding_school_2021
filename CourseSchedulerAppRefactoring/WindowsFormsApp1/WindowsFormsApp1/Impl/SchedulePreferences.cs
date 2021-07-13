@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace UniversityApp.Impl {
     public class SchedulePreferences {
-        public short MaxCoursesPerStudentPerDay { get; set; } = 3;
-        public short MaxCoursesPerStudentPerWeek { get; set; } = 50;
-        public short MaxProfessorCoursesPerWeek { get; set; } = 40;
-        public short MaxProfessorCoursesPerDay { get; set; } = 4;
+        public short MaxStudentCoursesPerDay { get; set; }
+        public short MaxStudentCoursesPerWeek { get; set; }
+        public short MaxProfessorCoursesPerWeek { get; set; }
+        public short MaxProfessorCoursesPerDay { get; set; }
 
         public SchedulePreferences() {
-            MaxCoursesPerStudentPerDay = 3;
-            MaxCoursesPerStudentPerWeek = 50;
-            MaxProfessorCoursesPerWeek = 40;
+            MaxStudentCoursesPerDay = 3;
+            MaxStudentCoursesPerWeek = 5;
+            MaxProfessorCoursesPerWeek = 5;
             MaxProfessorCoursesPerDay = 4;
         }
     }

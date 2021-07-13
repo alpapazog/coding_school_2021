@@ -76,7 +76,11 @@ namespace UniversityApp.WUI {
             this.metroSetDefaultButton3 = new MetroSet_UI.Controls.MetroSetDefaultButton();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
             this.tabProfessors = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.ctrlListProfessorCategories = new MetroSet_UI.Controls.MetroSetListBox();
+            this.lblProfessorCategories = new MetroSet_UI.Controls.MetroSetLabel();
             this.tabStudents = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.ctrlListStudentCategories = new MetroSet_UI.Controls.MetroSetListBox();
+            this.lblStudentCategories = new MetroSet_UI.Controls.MetroSetLabel();
             this.tabCourses = new MetroSet_UI.Child.MetroSetSetTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProfessors)).BeginInit();
@@ -122,8 +126,9 @@ namespace UniversityApp.WUI {
             this.dataGridStudents.Name = "dataGridStudents";
             this.dataGridStudents.RowHeadersVisible = false;
             this.dataGridStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridStudents.Size = new System.Drawing.Size(775, 245);
+            this.dataGridStudents.Size = new System.Drawing.Size(775, 210);
             this.dataGridStudents.TabIndex = 16;
+            this.dataGridStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridStudents_CellClick);
             // 
             // dataGridProfessors
             // 
@@ -136,8 +141,9 @@ namespace UniversityApp.WUI {
             this.dataGridProfessors.Name = "dataGridProfessors";
             this.dataGridProfessors.RowHeadersVisible = false;
             this.dataGridProfessors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridProfessors.Size = new System.Drawing.Size(775, 245);
+            this.dataGridProfessors.Size = new System.Drawing.Size(775, 210);
             this.dataGridProfessors.TabIndex = 17;
+            this.dataGridProfessors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProfessors_CellClick);
             // 
             // dataGridCourses
             // 
@@ -219,6 +225,7 @@ namespace UniversityApp.WUI {
             this.metroSetTabControl1.ThemeName = "MetroLite";
             this.metroSetTabControl1.UnselectedTextColor = System.Drawing.Color.Gray;
             this.metroSetTabControl1.UseAnimation = false;
+            this.metroSetTabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.metroSetTabControl1_Selected);
             // 
             // tabHome
             // 
@@ -311,6 +318,7 @@ namespace UniversityApp.WUI {
             this.btnPreferences.Text = "Preferences";
             this.btnPreferences.ThemeAuthor = "Narwin";
             this.btnPreferences.ThemeName = "MetroLite";
+            this.btnPreferences.Click += new System.EventHandler(this.btnPreferences_Click);
             // 
             // btnSaveData
             // 
@@ -584,6 +592,7 @@ namespace UniversityApp.WUI {
             this.metroBtnNext2Page2.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnNext2Page2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnNext2Page2.DisabledForeColor = System.Drawing.Color.Gray;
+            this.metroBtnNext2Page2.Enabled = false;
             this.metroBtnNext2Page2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroBtnNext2Page2.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.metroBtnNext2Page2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -611,6 +620,7 @@ namespace UniversityApp.WUI {
             this.metroBtnNext1Page2.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnNext1Page2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnNext1Page2.DisabledForeColor = System.Drawing.Color.Gray;
+            this.metroBtnNext1Page2.Enabled = false;
             this.metroBtnNext1Page2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroBtnNext1Page2.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.metroBtnNext1Page2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -688,6 +698,7 @@ namespace UniversityApp.WUI {
             this.dataGridViewPage2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPage2.Size = new System.Drawing.Size(679, 142);
             this.dataGridViewPage2.TabIndex = 0;
+            this.dataGridViewPage2.SelectionChanged += new System.EventHandler(this.dataGridViewPage2_SelectionChanged);
             // 
             // tabPage3
             // 
@@ -708,6 +719,7 @@ namespace UniversityApp.WUI {
             this.metroBtnNextPage3.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnNextPage3.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnNextPage3.DisabledForeColor = System.Drawing.Color.Gray;
+            this.metroBtnNextPage3.Enabled = false;
             this.metroBtnNextPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroBtnNextPage3.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.metroBtnNextPage3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -785,6 +797,7 @@ namespace UniversityApp.WUI {
             this.dataGridViewPage3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPage3.Size = new System.Drawing.Size(679, 142);
             this.dataGridViewPage3.TabIndex = 22;
+            this.dataGridViewPage3.SelectionChanged += new System.EventHandler(this.dataGridViewPage3_SelectionChanged);
             // 
             // tabPage4
             // 
@@ -805,6 +818,7 @@ namespace UniversityApp.WUI {
             this.metroBtnSelectDate.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnSelectDate.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.metroBtnSelectDate.DisabledForeColor = System.Drawing.Color.Gray;
+            this.metroBtnSelectDate.Enabled = false;
             this.metroBtnSelectDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroBtnSelectDate.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.metroBtnSelectDate.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -882,6 +896,7 @@ namespace UniversityApp.WUI {
             this.dataGridViewPage4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPage4.Size = new System.Drawing.Size(679, 142);
             this.dataGridViewPage4.TabIndex = 23;
+            this.dataGridViewPage4.SelectionChanged += new System.EventHandler(this.dataGridViewPage4_SelectionChanged);
             // 
             // tabPageCalendar
             // 
@@ -1083,6 +1098,8 @@ namespace UniversityApp.WUI {
             // tabProfessors
             // 
             this.tabProfessors.BaseColor = System.Drawing.Color.White;
+            this.tabProfessors.Controls.Add(this.ctrlListProfessorCategories);
+            this.tabProfessors.Controls.Add(this.lblProfessorCategories);
             this.tabProfessors.Controls.Add(this.dataGridProfessors);
             this.tabProfessors.Font = null;
             this.tabProfessors.ImageIndex = 0;
@@ -1099,9 +1116,55 @@ namespace UniversityApp.WUI {
             this.tabProfessors.ThemeName = "MetroLite";
             this.tabProfessors.ToolTipText = null;
             // 
+            // ctrlListProfessorCategories
+            // 
+            this.ctrlListProfessorCategories.BackColor = System.Drawing.Color.White;
+            this.ctrlListProfessorCategories.BorderColor = System.Drawing.Color.LightGray;
+            this.ctrlListProfessorCategories.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.ctrlListProfessorCategories.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.ctrlListProfessorCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ctrlListProfessorCategories.HoveredItemBackColor = System.Drawing.Color.LightGray;
+            this.ctrlListProfessorCategories.HoveredItemColor = System.Drawing.Color.DimGray;
+            this.ctrlListProfessorCategories.IsDerivedStyle = true;
+            this.ctrlListProfessorCategories.ItemHeight = 30;
+            this.ctrlListProfessorCategories.Location = new System.Drawing.Point(0, 260);
+            this.ctrlListProfessorCategories.MultiSelect = false;
+            this.ctrlListProfessorCategories.Name = "ctrlListProfessorCategories";
+            this.ctrlListProfessorCategories.SelectedIndex = -1;
+            this.ctrlListProfessorCategories.SelectedItem = null;
+            this.ctrlListProfessorCategories.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.ctrlListProfessorCategories.SelectedItemColor = System.Drawing.Color.White;
+            this.ctrlListProfessorCategories.SelectedText = null;
+            this.ctrlListProfessorCategories.SelectedValue = null;
+            this.ctrlListProfessorCategories.ShowBorder = false;
+            this.ctrlListProfessorCategories.ShowScrollBar = false;
+            this.ctrlListProfessorCategories.Size = new System.Drawing.Size(208, 130);
+            this.ctrlListProfessorCategories.Style = MetroSet_UI.Enums.Style.Light;
+            this.ctrlListProfessorCategories.StyleManager = null;
+            this.ctrlListProfessorCategories.TabIndex = 26;
+            this.ctrlListProfessorCategories.ThemeAuthor = "Narwin";
+            this.ctrlListProfessorCategories.ThemeName = "MetroLite";
+            // 
+            // lblProfessorCategories
+            // 
+            this.lblProfessorCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblProfessorCategories.IsDerivedStyle = true;
+            this.lblProfessorCategories.Location = new System.Drawing.Point(0, 234);
+            this.lblProfessorCategories.Name = "lblProfessorCategories";
+            this.lblProfessorCategories.Size = new System.Drawing.Size(365, 23);
+            this.lblProfessorCategories.Style = MetroSet_UI.Enums.Style.Light;
+            this.lblProfessorCategories.StyleManager = null;
+            this.lblProfessorCategories.TabIndex = 25;
+            this.lblProfessorCategories.Text = "Professor is eligible for the following course categories:";
+            this.lblProfessorCategories.ThemeAuthor = "Narwin";
+            this.lblProfessorCategories.ThemeName = "MetroLite";
+            this.lblProfessorCategories.Visible = false;
+            // 
             // tabStudents
             // 
             this.tabStudents.BaseColor = System.Drawing.Color.White;
+            this.tabStudents.Controls.Add(this.ctrlListStudentCategories);
+            this.tabStudents.Controls.Add(this.lblStudentCategories);
             this.tabStudents.Controls.Add(this.dataGridStudents);
             this.tabStudents.Font = null;
             this.tabStudents.ImageIndex = 0;
@@ -1117,6 +1180,50 @@ namespace UniversityApp.WUI {
             this.tabStudents.ThemeAuthor = "Narwin";
             this.tabStudents.ThemeName = "MetroLite";
             this.tabStudents.ToolTipText = null;
+            // 
+            // ctrlListStudentCategories
+            // 
+            this.ctrlListStudentCategories.BackColor = System.Drawing.Color.White;
+            this.ctrlListStudentCategories.BorderColor = System.Drawing.Color.LightGray;
+            this.ctrlListStudentCategories.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.ctrlListStudentCategories.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.ctrlListStudentCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ctrlListStudentCategories.HoveredItemBackColor = System.Drawing.Color.LightGray;
+            this.ctrlListStudentCategories.HoveredItemColor = System.Drawing.Color.DimGray;
+            this.ctrlListStudentCategories.IsDerivedStyle = true;
+            this.ctrlListStudentCategories.ItemHeight = 30;
+            this.ctrlListStudentCategories.Location = new System.Drawing.Point(0, 255);
+            this.ctrlListStudentCategories.MultiSelect = false;
+            this.ctrlListStudentCategories.Name = "ctrlListStudentCategories";
+            this.ctrlListStudentCategories.SelectedIndex = -1;
+            this.ctrlListStudentCategories.SelectedItem = null;
+            this.ctrlListStudentCategories.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.ctrlListStudentCategories.SelectedItemColor = System.Drawing.Color.White;
+            this.ctrlListStudentCategories.SelectedText = null;
+            this.ctrlListStudentCategories.SelectedValue = null;
+            this.ctrlListStudentCategories.ShowBorder = false;
+            this.ctrlListStudentCategories.ShowScrollBar = false;
+            this.ctrlListStudentCategories.Size = new System.Drawing.Size(208, 130);
+            this.ctrlListStudentCategories.Style = MetroSet_UI.Enums.Style.Light;
+            this.ctrlListStudentCategories.StyleManager = null;
+            this.ctrlListStudentCategories.TabIndex = 27;
+            this.ctrlListStudentCategories.ThemeAuthor = "Narwin";
+            this.ctrlListStudentCategories.ThemeName = "MetroLite";
+            // 
+            // lblStudentCategories
+            // 
+            this.lblStudentCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblStudentCategories.IsDerivedStyle = true;
+            this.lblStudentCategories.Location = new System.Drawing.Point(0, 229);
+            this.lblStudentCategories.Name = "lblStudentCategories";
+            this.lblStudentCategories.Size = new System.Drawing.Size(365, 23);
+            this.lblStudentCategories.Style = MetroSet_UI.Enums.Style.Light;
+            this.lblStudentCategories.StyleManager = null;
+            this.lblStudentCategories.TabIndex = 24;
+            this.lblStudentCategories.Text = "Student is eligible for the following course categories:";
+            this.lblStudentCategories.ThemeAuthor = "Narwin";
+            this.lblStudentCategories.ThemeName = "MetroLite";
+            this.lblStudentCategories.Visible = false;
             // 
             // tabCourses
             // 
@@ -1143,6 +1250,7 @@ namespace UniversityApp.WUI {
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.metroSetTabControl1);
             this.Name = "DataForm1";
+            this.Text = "University Course Scheduler";
             this.Load += new System.EventHandler(this.DataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProfessors)).EndInit();
@@ -1241,5 +1349,9 @@ namespace UniversityApp.WUI {
         private MetroSet_UI.Controls.MetroSetButton btnInitiateData;
         private MetroSet_UI.Controls.MetroSetButton bntExit;
         private MetroSet_UI.Controls.MetroSetButton btnPreferences;
+        private MetroSet_UI.Controls.MetroSetLabel lblProfessorCategories;
+        private MetroSet_UI.Controls.MetroSetLabel lblStudentCategories;
+        private MetroSet_UI.Controls.MetroSetListBox ctrlListProfessorCategories;
+        private MetroSet_UI.Controls.MetroSetListBox ctrlListStudentCategories;
     }
 }

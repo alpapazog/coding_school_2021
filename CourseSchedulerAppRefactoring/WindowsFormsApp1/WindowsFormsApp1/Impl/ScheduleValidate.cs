@@ -38,7 +38,13 @@ namespace UniversityApp.Impl {
 
             bool val6 = CheckPreferenceProfessorMaxCoursesPerDay(newSchedule);
 
-            IsValidated = val1 && val2 && val3 && val4 && val5 && val6;
+            bool val7 = CheckPreferenceStudentMaxCoursesPerDay(newSchedule);
+
+            bool val8 = CheckPreferenceStudentMaxCoursesPerWeek(newSchedule);
+
+            bool val9 = CheckPreferenceProfessorMaxCoursesPerWeek(newSchedule);
+
+            IsValidated = val1 && val2 && val3 && val4 && val5 && val6 && val7 && val8 && val9;
 
             File.AppendAllText(LogFile, _stringBuilder.ToString());
             _stringBuilder.Clear();
@@ -142,6 +148,39 @@ namespace UniversityApp.Impl {
             }
             else {
                 ErrorMessage = string.Concat(ErrorMessage, "\n", string.Format("Professors cannot have more than {0} courses per day.", University.Preferences.MaxProfessorCoursesPerDay));
+                return false;
+            }
+        }
+
+        public bool CheckPreferenceStudentMaxCoursesPerDay(Schedule newSchedule) {
+            int coursesPerDay = University.ScheduleList.FindAll(x => x.Calendar.Date == newSchedule.Calendar.Date && x.StudentId == newSchedule.StudentId).Count;
+            if (coursesPerDay + 1 <= University.Preferences.MaxStudentCoursesPerDay) {
+                return true;
+            }
+            else {
+                ErrorMessage = string.Concat(ErrorMessage, "\n", string.Format("STudents cannot have more than {0} courses per day.", University.Preferences.MaxStudentCoursesPerDay));
+                return false;
+            }
+        }
+
+        public bool CheckPreferenceStudentMaxCoursesPerWeek(Schedule newSchedule) {
+            int coursesPerWeek = University.ScheduleList.FindAll(x => Math.Abs((x.Calendar.Date - newSchedule.Calendar.Date).Days)<=7 && x.StudentId == newSchedule.StudentId).Count;
+            if (coursesPerWeek + 1 <= University.Preferences.MaxStudentCoursesPerWeek) {
+                return true;
+            }
+            else {
+                ErrorMessage = string.Concat(ErrorMessage, "\n", string.Format("Students cannot have more than {0} courses per week.", University.Preferences.MaxStudentCoursesPerWeek));
+                return false;
+            }
+        }
+
+        public bool CheckPreferenceProfessorMaxCoursesPerWeek(Schedule newSchedule) {
+            int coursesPerWeek = University.ScheduleList.FindAll(x => Math.Abs((x.Calendar.Date - newSchedule.Calendar.Date).Days) <= 7 && x.ProfessorId == newSchedule.ProfessorId).Count;
+            if (coursesPerWeek + 1 <= University.Preferences.MaxProfessorCoursesPerWeek) {
+                return true;
+            }
+            else {
+                ErrorMessage = string.Concat(ErrorMessage, "\n", string.Format("Professors cannot have more than {0} courses per week.", University.Preferences.MaxStudentCoursesPerWeek));
                 return false;
             }
         }

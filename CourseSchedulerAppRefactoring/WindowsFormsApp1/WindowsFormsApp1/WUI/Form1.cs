@@ -1,8 +1,6 @@
 ﻿using MetroSet_UI.Forms;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -32,10 +30,15 @@ namespace UniversityApp.WUI {
             dataGridProfessors.BackgroundColor = System.Drawing.Color.White;
             dataGridCourses.BackgroundColor = System.Drawing.Color.White;
             dataGridSchedules.BackgroundColor = System.Drawing.Color.White;
+            metroSetTabControl1.SelectedTab = tabHome;
+
         }
 
         private void btnInitiateData_Click(object sender, EventArgs e) {
             InitializeUniversityData();
+            dataGridStudents.ClearSelection();
+            dataGridProfessors.ClearSelection();
+            dataGridCourses.ClearSelection();
         }
 
         private void btnLoadData_Click(object sender, EventArgs e) {
@@ -52,6 +55,23 @@ namespace UniversityApp.WUI {
 
         private void btnRemove_Click(object sender, EventArgs e) {
             RemoveSchedules();
+        }
+
+        private void btnPreferences_Click(object sender, EventArgs e) {
+            LoadPreferencesForm();
+        }
+
+        private void dataGridStudents_CellClick(object sender, DataGridViewCellEventArgs e) {
+            LoadStudentCategoriesList();
+        }
+
+        private void dataGridProfessors_CellClick(object sender, DataGridViewCellEventArgs e) {
+            LoadProfessorCategoriesList();
+        }
+        private void metroSetTabControl1_Selected(object sender, TabControlEventArgs e) {
+            if (NewUniversity == null) {
+                metroSetTabControl1.SelectedTab = tabHome;
+            }
         }
         #endregion
 
@@ -89,6 +109,7 @@ namespace UniversityApp.WUI {
             dataGridStudents.Columns["Id"].Visible = false; ;
             RefreshSceduleGrid();
 
+
         }
         private bool AddSchedule(Schedule newSchedule) {
 
@@ -103,15 +124,6 @@ namespace UniversityApp.WUI {
                 return false;
             }
 
-
-            // TODO: 1. CANNOT ADD SAME STUDENT + PROFESSOR IN SAME DATE & HOUR
-
-            // TODO: 2. EACH STUDENT CANNOT HAVE MORE THAN 3 COURSES PER DAY!
-
-            // TODO: 3. A PROFESSOR CANNOT TEACH MORE THAN 4 COURSES PER DAY AND 40 COURSES PER WEEK
-
-
-            // todo: add exception handling?
         }
         private void RemoveSchedules() {
             foreach (DataGridViewRow row in dataGridSchedules.SelectedRows) {
@@ -125,7 +137,14 @@ namespace UniversityApp.WUI {
             InitDataGrids();
         }
         private void SaveUniversityData() {
-            (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);
+            try {
+                (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);
+            }
+            catch (Exception e) {
+                string txt = string.Format("Data save failed. {0}",e.ToString());
+                MessageBox.Show(txt, "Data save error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         private void LoadUniversityData() {
             if (NewUniversity != null) {
@@ -138,6 +157,7 @@ namespace UniversityApp.WUI {
             }
             NewUniversity = (new JsonHandler(_jsonFile)).DeserializeFromJson();
             InitDataGrids();
+            metroSetTabControl1.SelectedTab = tabSchedule;
         }
         private void RefreshSceduleGrid() {
             dataGridSchedules.Rows.Clear();
@@ -152,6 +172,52 @@ namespace UniversityApp.WUI {
                 AddToScheduleGrid(s);
             }
         }
+
+        private void LoadPreferencesForm() {
+            PreferenceForm preferenceForm = new PreferenceForm();
+
+
+            if (NewUniversity == null) {
+                MessageBox.Show("No university data found", "Preferences Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            preferenceForm._university = NewUniversity;
+            preferenceForm.ShowDialog();
+        }
+
+        private void LoadStudentCategoriesList() {
+            ctrlListStudentCategories.Clear();
+            lblStudentCategories.Visible = true;
+            try {
+                DataGridViewRow studentRow = dataGridStudents.SelectedRows[0];
+                Student student = NewUniversity.Students.Find(x => x.Id == (Guid)studentRow.Cells[4].Value);
+                if (student != null) {
+                    foreach (var category in student.ValidCourseCategories) {
+                        ctrlListStudentCategories.AddItem(category.ToString());
+                    }
+                }
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            }
+        }
+        private void LoadProfessorCategoriesList() {
+            ctrlListProfessorCategories.Clear();
+            lblProfessorCategories.Visible = true;
+            try {
+                DataGridViewRow professorRow = dataGridProfessors.SelectedRows[0];
+                Professor professor = NewUniversity.Professors.Find(x => x.Id == (Guid)professorRow.Cells[4].Value);
+                if (professor != null) {
+                    foreach (var category in professor.ValidCourseCategories) {
+                        ctrlListProfessorCategories.AddItem(category.ToString());
+                    }
+                }
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
 
         #endregion
 
@@ -242,6 +308,9 @@ namespace UniversityApp.WUI {
                         break;
                 }
                 this.dataGridViewPage2.Columns["Id"].Visible = false;
+                this.dataGridViewPage2.ClearSelection();
+                metroBtnNext1Page2.Enabled = false;
+                metroBtnNext2Page2.Enabled = false;
             }
             catch (Exception e) {
                 File.WriteAllText(_logFile, e.ToString());
@@ -278,6 +347,9 @@ namespace UniversityApp.WUI {
                 else if (wizardPages1.Order.Exists(x => x == "Course") && wizardPages1.Order.Exists(x => x == "Professor")) {
                     metroBtnNextPage3.Text = "Select Student";
                 }
+                this.dataGridViewPage3.ClearSelection();
+
+                metroBtnNextPage3.Enabled = false;
             }
             catch (Exception e) {
                 File.WriteAllText(_logFile, e.ToString());
@@ -305,6 +377,9 @@ namespace UniversityApp.WUI {
                         break;
                 }
                 this.dataGridViewPage4.Columns["Id"].Visible = false;
+                this.dataGridViewPage4.ClearSelection();
+
+                metroBtnSelectDate.Enabled = false;
             }
             catch (Exception e) {
                 File.WriteAllText(_logFile, e.ToString());
@@ -459,9 +534,23 @@ namespace UniversityApp.WUI {
             }
             return courseList;
         }
+
+
+
         #endregion
 
-  
+        private void dataGridViewPage2_SelectionChanged(object sender, EventArgs e) {
+            metroBtnNext1Page2.Enabled = true;
+            metroBtnNext2Page2.Enabled = true;
+        }
+
+        private void dataGridViewPage3_SelectionChanged(object sender, EventArgs e) {
+            metroBtnNextPage3.Enabled = true;
+        }
+
+        private void dataGridViewPage4_SelectionChanged(object sender, EventArgs e) {
+            metroBtnSelectDate.Enabled = true;
+        }
     }
 
     class WizardPages : TabControl {

@@ -86,6 +86,12 @@
     <Compile Include="Impl\Schedule.cs" />
     <Compile Include="Impl\Student.cs" />
     <Compile Include="Impl\University.cs" />
+    <Compile Include="WUI\PreferenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WUI\PreferenceForm.Designer.cs">
+      <DependentUpon>PreferenceForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="WUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +106,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WUI\PreferenceForm.resx">
+      <DependentUpon>PreferenceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
