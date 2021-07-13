@@ -239,6 +239,7 @@ namespace UniversityApp.WUI {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderThickness = 2F;
             this.ClientSize = new System.Drawing.Size(412, 376);
             this.Controls.Add(this.ctrlMaxProfessorCoursesPerWeek);
             this.Controls.Add(this.ctrlMaxProfessorCoursesPerDay);
@@ -254,6 +255,8 @@ namespace UniversityApp.WUI {
             this.Controls.Add(this.metroSetLabel2);
             this.Controls.Add(this.metroSetLabel1);
             this.Name = "PreferenceForm";
+            this.Opacity = 0D;
+            this.ShowBorder = true;
             this.Text = "Preferences";
             this.Load += new System.EventHandler(this.PreferenceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctrlMaxStudentCoursesPerDay)).EndInit();

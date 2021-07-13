@@ -1250,6 +1250,7 @@ namespace UniversityApp.WUI {
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.metroSetTabControl1);
             this.Name = "DataForm1";
+            this.Opacity = 0.2D;
             this.Text = "University Course Scheduler";
             this.Load += new System.EventHandler(this.DataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).EndInit();
