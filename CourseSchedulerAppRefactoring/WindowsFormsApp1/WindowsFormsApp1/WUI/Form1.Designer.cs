@@ -118,6 +118,7 @@ namespace UniversityApp.WUI {
             // 
             // dataGridStudents
             // 
+            this.dataGridStudents.AllowUserToAddRows = false;
             this.dataGridStudents.AllowUserToOrderColumns = true;
             this.dataGridStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -132,6 +133,7 @@ namespace UniversityApp.WUI {
             // 
             // dataGridProfessors
             // 
+            this.dataGridProfessors.AllowUserToAddRows = false;
             this.dataGridProfessors.AllowUserToOrderColumns = true;
             this.dataGridProfessors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridProfessors.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -147,6 +149,7 @@ namespace UniversityApp.WUI {
             // 
             // dataGridCourses
             // 
+            this.dataGridCourses.AllowUserToAddRows = false;
             this.dataGridCourses.AllowUserToOrderColumns = true;
             this.dataGridCourses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -208,12 +211,12 @@ namespace UniversityApp.WUI {
             this.metroSetTabControl1.Controls.Add(this.tabProfessors);
             this.metroSetTabControl1.Controls.Add(this.tabStudents);
             this.metroSetTabControl1.Controls.Add(this.tabCourses);
-            this.metroSetTabControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.metroSetTabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroSetTabControl1.IsDerivedStyle = true;
             this.metroSetTabControl1.ItemSize = new System.Drawing.Size(100, 38);
             this.metroSetTabControl1.Location = new System.Drawing.Point(15, 84);
             this.metroSetTabControl1.Name = "metroSetTabControl1";
-            this.metroSetTabControl1.SelectedIndex = 1;
+            this.metroSetTabControl1.SelectedIndex = 4;
             this.metroSetTabControl1.SelectedTextColor = System.Drawing.Color.White;
             this.metroSetTabControl1.Size = new System.Drawing.Size(783, 541);
             this.metroSetTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;

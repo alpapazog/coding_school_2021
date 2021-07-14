@@ -138,7 +138,12 @@ namespace UniversityApp.WUI {
         }
         private void SaveUniversityData() {
             try {
-                (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);
+                if (NewUniversity != null) {
+                    (new JsonHandler(_jsonFile)).SerializeToJson(NewUniversity);
+                }
+                else {
+                    MessageBox.Show("Cannot save empty university");
+                }
             }
             catch (Exception e) {
                 string txt = string.Format("Data save failed. {0}",e.ToString());

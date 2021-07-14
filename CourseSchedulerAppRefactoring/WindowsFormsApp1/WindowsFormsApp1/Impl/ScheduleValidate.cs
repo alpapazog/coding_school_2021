@@ -158,7 +158,7 @@ namespace UniversityApp.Impl {
                 return true;
             }
             else {
-                ErrorMessage = string.Concat(ErrorMessage, "\n", string.Format("STudents cannot have more than {0} courses per day.", University.Preferences.MaxStudentCoursesPerDay));
+                ErrorMessage = string.Concat(ErrorMessage, "\n", string.Format("Students cannot have more than {0} courses per day.", University.Preferences.MaxStudentCoursesPerDay));
                 return false;
             }
         }

@@ -30,7 +30,6 @@ namespace UniversityApp.Impl {
                 Category = CourseCategoryEnum.Physics,
                 Hours = 100
             });
-            Console.WriteLine(Courses[0].Category.ToString());
 
             Courses.Add(new Course() {
                 
@@ -50,7 +49,7 @@ namespace UniversityApp.Impl {
 
             Courses.Add(new Course() {
                 
-                Code = "04",
+                Code = "4",
                 Subject = "Financial II",
                 Category = CourseCategoryEnum.Financial,
                 Hours = 50
@@ -71,7 +70,6 @@ namespace UniversityApp.Impl {
                 ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Chemistry, CourseCategoryEnum.Financial }
             });
 
-
             Students.Add(new Student() {
                 Name = "Dimitris",
                 Surname = "Raptodimos",
@@ -79,11 +77,25 @@ namespace UniversityApp.Impl {
                 ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Physics, CourseCategoryEnum.Financial } 
             });
 
+            Students.Add(new Student() {
+                Name = "Alexis",
+                Surname = "Papazoglou",
+                Registration_Number = "1900",
+                ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Mathematics, CourseCategoryEnum.Chemistry, CourseCategoryEnum.Financial }
+            });
+
             Professors.Add(new Professor() {
                 Name = "Maria",
                 Surname = "Papadopoulou",
-                Rank = "1",
+                Rank = "Assistant",
                 ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Chemistry, CourseCategoryEnum.Financial }
+            });
+
+            Professors.Add(new Professor() {
+                Name = "John",
+                Surname = "Doe",
+                Rank = "Associate",
+                ValidCourseCategories = new List<CourseCategoryEnum>() { CourseCategoryEnum.Mathematics, CourseCategoryEnum.Physics }
             });
 
 
