@@ -19,21 +19,6 @@ namespace OnlineTrainingCourses.EF.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.Property<int>("CoursesID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentsID")
-                        .HasColumnType("int");
-
-                    b.HasKey("CoursesID", "StudentsID");
-
-                    b.HasIndex("StudentsID");
-
-                    b.ToTable("CourseStudent");
-                });
-
             modelBuilder.Entity("OnlineTrainingCourses.Model.Course", b =>
                 {
                     b.Property<int>("ID")
@@ -90,21 +75,6 @@ namespace OnlineTrainingCourses.EF.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.HasOne("OnlineTrainingCourses.Model.Course", null)
-                        .WithMany()
-                        .HasForeignKey("CoursesID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OnlineTrainingCourses.Model.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
